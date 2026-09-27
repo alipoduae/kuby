@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" fill="none">
+  <defs>
+    <linearGradient id="night" x1="80" y1="35" x2="820" y2="610" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#273765" />
+      <stop offset=".55" stop-color="#171d3b" />
+      <stop offset="1" stop-color="#111629" />
+    </linearGradient>
+    <linearGradient id="rail" x1="188" y1="125" x2="722" y2="151" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8c9bd1" />
+      <stop offset=".5" stop-color="#d1c9ee" />
+      <stop offset="1" stop-color="#6576b5" />
+    </linearGradient>
+    <linearGradient id="pink" x1="353" y1="335" x2="512" y2="444" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ff9be4" />
+      <stop offset=".5" stop-color="#ed62d0" />
+      <stop offset="1" stop-color="#9f4fe7" />
+    </linearGradient>
+    <linearGradient id="bed" x1="252" y1="460" x2="658" y2="513" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6676bc" />
+      <stop offset="1" stop-color="#343f78" />
+    </linearGradient>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientTransform="matrix(0 225 -330 0 470 330)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#b052cb" stop-opacity=".32" />
+      <stop offset="1" stop-color="#b052cb" stop-opacity="0" />
+    </radialGradient>
+    <filter id="shadow" x="150" y="80" width="620" height="490" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="13" />
+    </filter>
+  </defs>
+  <rect width="900" height="620" fill="url(#night)" />
+  <rect width="900" height="620" fill="url(#halo)" />
+  <circle cx="466" cy="300" r="213" stroke="#8290d0" stroke-opacity=".16" />
+  <circle cx="466" cy="300" r="177" stroke="#ed68d0" stroke-opacity=".13" />
+  <ellipse cx="458" cy="518" rx="277" ry="45" fill="#050817" fill-opacity=".65" filter="url(#shadow)" />
+  <path d="M206 132V446M711 132V446M206 133H711M206 148H711" stroke="url(#rail)" stroke-width="13" stroke-linecap="round" />
+  <path d="M232 150V419M685 150V419" stroke="#909cc9" stroke-opacity=".55" stroke-width="5" />
+  <path d="M232 229H685" stroke="url(#rail)" stroke-width="14" stroke-linecap="round" />
+  <path d="M184 446H733V496H184z" fill="#252f5c" />
+  <path d="m220 430 480 0-43 46H262z" fill="url(#bed)" />
+  <path d="M261 436H660M276 446H646M292 456H631" stroke="#abb4ec" stroke-opacity=".28" />
+  <path d="m285 420 351 0-46 28H331z" fill="#475491" />
+  <text x="462" y="416" fill="url(#pink)" font-family="Arial, sans-serif" font-size="62" font-weight="800" letter-spacing="-5" text-anchor="middle" transform="skewX(-8)">KUBY</text>
+  <g transform="translate(303 137)">
+    <ellipse cy="0" rx="43" ry="44" fill="#855be0" />
+    <ellipse cy="0" rx="14" ry="15" fill="#24284c" />
+    <circle r="34" stroke="#c0a9ff" stroke-width="5" />
+    <path d="M-39 0a39 39 0 0 1 78 0" stroke="#e3b6ff" stroke-width="4" />
+  </g>
+  <path d="M335 137c34 18 33 31 65 37 32 6 39 26 39 54" stroke="#f27ad5" stroke-width="4" />
+  <rect x="402" y="214" width="79" height="42" rx="7" fill="url(#pink)" />
+  <path d="M418 255h47l-8 40h-31z" fill="#6c75a8" />
+  <path d="m429 294 25 0-5 25h-15z" fill="#e992df" />
+  <circle cx="442" cy="323" r="6" fill="#ffb3ec" />
+  <path d="M312 548h300" stroke="#7b87c5" stroke-opacity=".55" />
+  <text x="462" y="578" fill="#bbc4eb" font-family="Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="3" text-anchor="middle">A LITTLE BIT OF KUBY, LAYER BY LAYER</text>
+</svg>

@@ -1,0 +1,12 @@
+{
+  "name": "kuby-offline-intro",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "bundle:printer": "esbuild printer-vendor-entry.js --bundle --minify --platform=browser --format=iife --outfile=kuby-three.js"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.0",
+    "three": "0.170.0"
+  }
+}

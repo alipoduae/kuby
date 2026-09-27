@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="78" y1="37" x2="805" y2="606" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#242f58" />
+      <stop offset=".57" stop-color="#171c38" />
+      <stop offset="1" stop-color="#101526" />
+    </linearGradient>
+    <linearGradient id="screen" x1="291" y1="180" x2="545" y2="349" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#364a82" />
+      <stop offset="1" stop-color="#202345" />
+    </linearGradient>
+    <linearGradient id="lamp" x1="672" y1="229" x2="739" y2="346" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffafe8" />
+      <stop offset="1" stop-color="#d850bc" />
+    </linearGradient>
+    <linearGradient id="desk" x1="122" y1="409" x2="776" y2="496" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#444b79" />
+      <stop offset="1" stop-color="#262b4f" />
+    </linearGradient>
+    <radialGradient id="light" cx="0" cy="0" r="1" gradientTransform="matrix(0 215 -296 0 622 335)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#d853c6" stop-opacity=".27" />
+      <stop offset="1" stop-color="#d853c6" stop-opacity="0" />
+    </radialGradient>
+    <filter id="shadow" x="116" y="98" width="681" height="452" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="18" stdDeviation="13" flood-color="#090b1c" flood-opacity=".4" />
+    </filter>
+  </defs>
+  <rect width="900" height="620" fill="url(#bg)" />
+  <rect width="900" height="620" fill="url(#light)" />
+  <circle cx="698" cy="300" r="173" stroke="#d273df" stroke-opacity=".12" />
+  <g filter="url(#shadow)">
+    <path d="M140 411h620v57H140z" fill="url(#desk)" />
+    <path d="M173 468h28v112h-28zm526 0h28v112h-28z" fill="#222849" />
+    <rect x="265" y="157" width="319" height="224" rx="14" fill="#acb4da" />
+    <rect x="278" y="170" width="293" height="197" rx="7" fill="url(#screen)" />
+    <path d="M305 337c54-110 97-110 150-28 31 47 65 37 94-8" stroke="#ee78d3" stroke-width="8" stroke-linecap="round" />
+    <path d="M307 214h122m-122 18h81m-81 18h102" stroke="#a7b9f5" stroke-opacity=".45" stroke-width="4" stroke-linecap="round" />
+    <path d="M418 382h20v30h-20z" fill="#939bc2" />
+    <path d="M371 411h114v14H371z" fill="#bbc1df" />
+    <rect x="242" y="424" width="365" height="16" rx="8" fill="#11182e" />
+    <path d="M628 359h18v53h-18z" fill="#9a68d0" />
+    <path d="M594 271c3-39 25-63 54-63s51 24 54 63H594Z" fill="url(#lamp)" />
+    <ellipse cx="648" cy="271" rx="54" ry="11" fill="#f8a4e4" />
+    <ellipse cx="648" cy="271" rx="35" ry="6" fill="#ffe0f4" />
+    <path d="M607 411c0-9 18-17 41-17s41 8 41 17v11c0 9-18 17-41 17s-41-8-41-17v-11Z" fill="#796ee0" />
+    <ellipse cx="648" cy="411" rx="41" ry="12" fill="#a496fa" />
+    <path d="M648 394v-73" stroke="#c1a7f3" stroke-width="12" stroke-linecap="round" />
+    <rect x="116" y="374" width="92" height="38" rx="6" fill="#e86bc9" />
+    <path d="M127 382h70m-70 9h70m-70 9h70" stroke="#ffafe9" stroke-opacity=".7" stroke-width="2" />
+    <rect x="726" y="383" width="31" height="29" rx="6" fill="#6175ce" />
+    <path d="M733 381v-51m8 51v-68m8 68v-47" stroke="#eb75d1" stroke-width="5" stroke-linecap="round" />
+    <path d="M733 336v-14m8-11v-11m8 26v-11" stroke="#bec6ff" stroke-width="5" stroke-linecap="round" />
+  </g>
+  <path d="M180 521h540" stroke="#7984c4" stroke-opacity=".4" />
+  <text x="450" y="556" fill="#c5c9e3" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="4" text-anchor="middle">A STUDIO FOR SMALL WONDERS</text>
+</svg>

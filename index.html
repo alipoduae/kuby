@@ -1,0 +1,2302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Meet Kuby, an independent 3D-printing studio making everyday ideas a little more considered."
+    />
+    <meta name="theme-color" content="#0b1020" />
+    <title>Kuby — Made for the everyday</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --paper: #0b1020;
+        --white: #20273b;
+        --ink: #f4f1fb;
+        --muted: #a7acc5;
+        --line: #292d49;
+        --leaf: #eb68d0;
+        --deep: #151b33;
+        --coral: #fa7fc2;
+        --sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+        --display: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+        --page-width: 1360px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 100px;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(ellipse at 78% 20%, rgb(115 45 133 / 13%), transparent 34%),
+          radial-gradient(ellipse at 8% 52%, rgb(38 73 155 / 12%), transparent 39%),
+          var(--paper);
+        background-attachment: fixed;
+        color: var(--ink);
+        font-family: var(--sans);
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      button {
+        color: inherit;
+        font: inherit;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button:focus-visible,
+      a:focus-visible {
+        outline: 3px solid var(--leaf);
+        outline-offset: 4px;
+      }
+
+      .announcement {
+        min-height: 33px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 7px 18px;
+        background: var(--deep);
+        color: #f1edf8;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .announcement span {
+        margin-left: 8px;
+        color: var(--leaf);
+      }
+
+      .site-header {
+        position: sticky;
+        z-index: 20;
+        top: 0;
+        border-bottom: 1px solid rgb(211 206 239 / 9%);
+        background: rgb(11 16 32 / 93%);
+        backdrop-filter: blur(18px);
+      }
+
+      .header-inner {
+        position: relative;
+        width: min(100% - 72px, var(--page-width));
+        min-height: 79px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 auto;
+      }
+
+      .wordmark {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        font-family: var(--display);
+        font-size: 27px;
+        font-weight: 800;
+        letter-spacing: -0.09em;
+      }
+
+      .wordmark-flower {
+        width: 17px;
+        height: 17px;
+        position: relative;
+        display: block;
+        transform: rotate(12deg);
+      }
+
+      .wordmark-flower::before,
+      .wordmark-flower::after {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 8px;
+        height: 8px;
+        border-radius: 100% 0 100% 100%;
+        background: var(--coral);
+        content: "";
+      }
+
+      .wordmark-flower::before {
+        transform: translateY(-4px);
+        box-shadow: 5px 5px 0 -1px #7678ef, -5px 5px 0 -1px #d94fb8;
+      }
+
+      .wordmark-flower::after {
+        top: 7px;
+        left: 7px;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--ink);
+      }
+
+      .site-nav {
+        display: flex;
+        align-items: center;
+        gap: clamp(25px, 4vw, 54px);
+        margin-left: 75px;
+      }
+
+      .site-nav a {
+        position: relative;
+        padding: 8px 0;
+        color: #b8bed8;
+        font-size: 12px;
+        font-weight: 600;
+        transition: color 180ms ease;
+      }
+
+      .site-nav a::after {
+        position: absolute;
+        right: 0;
+        bottom: 2px;
+        left: 0;
+        height: 1px;
+        background: currentColor;
+        content: "";
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 180ms ease;
+      }
+
+      .site-nav a:hover {
+        color: var(--ink);
+      }
+
+      .site-nav a:hover::after {
+        transform: scaleX(1);
+      }
+
+      .header-cta {
+        min-height: 41px;
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 0 15px;
+        border: 1px solid #394162;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 700;
+        transition:
+          border-color 180ms ease,
+          background 180ms ease,
+          transform 180ms ease;
+      }
+
+      .header-cta:hover {
+        transform: translateY(-1px);
+        border-color: var(--leaf);
+        background: #f49be0;
+        color: #21142b;
+      }
+
+      .header-cta.shop-link {
+        border-color: var(--leaf);
+        background: var(--leaf);
+        color: #21142b;
+      }
+
+      .header-cta.shop-link:hover {
+        border-color: #f8b5e9;
+        background: #f8b5e9;
+      }
+
+      .header-cta svg {
+        width: 15px;
+        height: 15px;
+      }
+
+      .menu-toggle {
+        width: 41px;
+        height: 41px;
+        display: none;
+        place-items: center;
+        padding: 0;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .menu-toggle svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .hero {
+        width: min(100% - 72px, var(--page-width));
+        min-height: min(770px, calc(100svh - 112px));
+        display: grid;
+        grid-template-columns: minmax(340px, 0.76fr) minmax(0, 1.24fr);
+        align-items: center;
+        gap: clamp(34px, 5vw, 76px);
+        margin: 0 auto;
+        padding: 45px 0 68px;
+      }
+
+      .hero-copy {
+        position: relative;
+        z-index: 1;
+        padding-bottom: 8px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 26px;
+        color: #c1b7d0;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow-dot {
+        width: 7px;
+        height: 7px;
+        display: inline-block;
+        border-radius: 50%;
+        background: var(--leaf);
+        box-shadow: 0 0 0 4px rgb(235 104 208 / 16%);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      figure {
+        margin: 0;
+      }
+
+      .hero h1 {
+        margin: 0 0 5px -0.08em;
+        color: var(--ink);
+        font-family: var(--display);
+        font-size: clamp(90px, 11vw, 151px);
+        font-weight: 800;
+        letter-spacing: -0.115em;
+        line-height: 0.9;
+      }
+
+      .hero h1 span {
+        color: var(--leaf);
+      }
+
+      .hero-deck {
+        max-width: 400px;
+        margin: 29px 0 15px;
+        font-family: var(--display);
+        font-size: clamp(23px, 2.3vw, 29px);
+        font-weight: 600;
+        letter-spacing: -0.06em;
+        line-height: 1.27;
+      }
+
+      .hero-description {
+        max-width: 430px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.8;
+      }
+
+      .hero-ctas {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 18px;
+        margin-top: 28px;
+      }
+
+      .button-primary {
+        min-height: 51px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 11px;
+        padding: 0 19px;
+        border: 1px solid var(--ink);
+        border-radius: 999px;
+        background: var(--ink);
+        color: var(--white);
+        cursor: pointer;
+        font-size: 11px;
+        font-weight: 700;
+        transition:
+          transform 180ms ease,
+          background 180ms ease,
+          color 180ms ease;
+      }
+
+      .button-primary:hover {
+        transform: translateY(-2px);
+        background: var(--leaf);
+        color: var(--ink);
+      }
+
+      .button-primary svg,
+      .text-link svg {
+        width: 15px;
+        height: 15px;
+        transition: transform 180ms ease;
+      }
+
+      .button-primary:hover svg,
+      .text-link:hover svg {
+        transform: translateX(3px);
+      }
+
+      .text-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 0;
+        color: #d7d5e8;
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .hero-footnote {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 35px 0 0;
+        color: #a8aec7;
+        font-size: 10px;
+        font-weight: 500;
+      }
+
+      .hero-footnote span {
+        width: 29px;
+        height: 1px;
+        background: #4a5274;
+      }
+
+      .printer-stage {
+        position: relative;
+        min-height: 565px;
+        overflow: hidden;
+        border: 1px solid rgb(171 162 228 / 15%);
+        border-radius: 8px;
+        background:
+          radial-gradient(ellipse at 50% 44%, #312044 0%, #1c2441 44%, #141c34 100%);
+        box-shadow: 0 24px 70px rgb(0 0 0 / 36%);
+        isolation: isolate;
+      }
+
+      .printer-canvas {
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 500ms ease;
+      }
+
+      .printer-stage.is-ready .printer-canvas {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .scene-fallback {
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        transition: opacity 450ms ease;
+      }
+
+      .printer-stage.is-ready .scene-fallback {
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      .stage-meta {
+        position: absolute;
+        z-index: 4;
+        top: 17px;
+        right: 17px;
+        left: 17px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        pointer-events: none;
+      }
+
+      .stage-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 30px;
+        padding: 0 10px;
+        border: 1px solid rgb(211 206 239 / 14%);
+        border-radius: 999px;
+        background: rgb(13 19 39 / 88%);
+        color: #e0def0;
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        backdrop-filter: blur(8px);
+      }
+
+      .stage-label span {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--coral);
+      }
+
+      .speed-control {
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+        padding: 3px;
+        border: 1px solid rgb(211 206 239 / 16%);
+        border-radius: 999px;
+        background: rgb(13 19 39 / 91%);
+        backdrop-filter: blur(8px);
+        pointer-events: auto;
+      }
+
+      .speed-option {
+        min-height: 25px;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 0 8px;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: #b6bad3;
+        cursor: pointer;
+        font-size: 8px;
+        font-weight: 700;
+        white-space: nowrap;
+        transition:
+          background 180ms ease,
+          color 180ms ease;
+      }
+
+      .speed-option:hover:not([aria-pressed="true"]) {
+        background: rgb(124 100 190 / 20%);
+        color: #f2eafb;
+      }
+
+      .speed-option[aria-pressed="true"] {
+        background: #cc4fae;
+        color: #1c1028;
+      }
+
+      .speed-option > span:first-child {
+        color: #f39ce0;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .speed-option[aria-pressed="true"] > span:first-child {
+        color: #291432;
+      }
+
+      .stage-control-bar {
+        position: absolute;
+        z-index: 4;
+        right: 16px;
+        bottom: 15px;
+        left: 16px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 12px;
+        pointer-events: none;
+      }
+
+      .print-status {
+        min-width: 130px;
+        display: grid;
+        gap: 4px;
+        padding: 10px 12px;
+        border: 1px solid rgb(211 206 239 / 14%);
+        border-radius: 4px;
+        background: rgb(13 19 39 / 91%);
+        backdrop-filter: blur(8px);
+      }
+
+      .print-status-label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #e2ddf0;
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+      }
+
+      .print-status-label::before {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--leaf);
+        box-shadow: 0 0 0 3px rgb(235 104 208 / 17%);
+        content: "";
+      }
+
+      .print-status.is-paused .print-status-label::before {
+        background: #d28ae0;
+        box-shadow: 0 0 0 3px rgb(210 138 224 / 18%);
+      }
+
+      .print-status-count {
+        color: #a9afca;
+        font-size: 9px;
+      }
+
+      .stage-controls {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        pointer-events: auto;
+      }
+
+      .scene-button {
+        min-height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        padding: 0 11px;
+        border: 1px solid rgb(211 206 239 / 16%);
+        border-radius: 999px;
+        background: rgb(13 19 39 / 93%);
+        color: #ebe7f5;
+        cursor: pointer;
+        font-size: 9px;
+        font-weight: 700;
+        backdrop-filter: blur(8px);
+        transition:
+          background 180ms ease,
+          transform 180ms ease;
+      }
+
+      .scene-button:hover {
+        transform: translateY(-1px);
+        background: var(--white);
+      }
+
+      .scene-button svg {
+        width: 13px;
+        height: 13px;
+      }
+
+      .scene-button.icon-only {
+        width: 36px;
+        padding: 0;
+      }
+
+      .stage-instruction {
+        position: absolute;
+        z-index: 3;
+        bottom: 20px;
+        left: 50%;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #aaafc7;
+        font-size: 8px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        pointer-events: none;
+        transform: translateX(-50%);
+      }
+
+      .stage-instruction svg {
+        width: 13px;
+        height: 13px;
+      }
+
+      .marquee {
+        overflow: hidden;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: #11182b;
+      }
+
+      .marquee-track {
+        width: max-content;
+        display: flex;
+        align-items: center;
+        gap: 29px;
+        padding: 16px 0;
+        animation: marquee 28s linear infinite;
+      }
+
+      .marquee:hover .marquee-track {
+        animation-play-state: paused;
+      }
+
+      .marquee span {
+        color: #c2c6dc;
+        font-family: var(--display);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+      }
+
+      .marquee b {
+        color: var(--leaf);
+        font-size: 14px;
+      }
+
+      @keyframes marquee {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      .section-shell {
+        width: min(100% - 72px, var(--page-width));
+        margin: 0 auto;
+      }
+
+      .art-section {
+        padding: 101px 0 110px;
+        border-top: 1px solid #252d48;
+        border-bottom: 1px solid #252d48;
+        background: #12182b;
+      }
+
+      .art-heading {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 35px;
+        margin-bottom: 30px;
+      }
+
+      .art-heading h2 {
+        max-width: 660px;
+        margin: 0;
+        font-family: var(--display);
+        font-size: clamp(39px, 4.8vw, 61px);
+        font-weight: 600;
+        letter-spacing: -0.08em;
+        line-height: 1.03;
+      }
+
+      .art-heading h2 span {
+        color: var(--leaf);
+        font-family: Georgia, "Times New Roman", serif;
+        font-style: italic;
+        font-weight: 400;
+      }
+
+      .art-heading > p {
+        max-width: 320px;
+        margin: 0 0 2px;
+        color: #adb2ca;
+        font-size: 12px;
+        line-height: 1.75;
+      }
+
+      .image-gallery {
+        display: grid;
+        grid-template-columns: 1.18fr 0.82fr 0.82fr;
+        gap: 13px;
+      }
+
+      .gallery-card {
+        position: relative;
+        min-width: 0;
+        min-height: 325px;
+        overflow: hidden;
+        border: 1px solid #303654;
+        border-radius: 5px;
+        background: #202943;
+        isolation: isolate;
+      }
+
+      .gallery-card::after {
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+        background: linear-gradient(0deg, rgb(8 10 24 / 91%) 0%, rgb(12 15 35 / 28%) 48%, transparent 78%);
+        content: "";
+        pointer-events: none;
+      }
+
+      .gallery-card img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.78) saturate(0.88);
+        transition:
+          transform 650ms cubic-bezier(0.2, 0.8, 0.2, 1),
+          filter 350ms ease;
+      }
+
+      .gallery-card:hover img {
+        filter: brightness(0.96) saturate(1.04);
+        transform: scale(1.045);
+      }
+
+      .gallery-index {
+        position: absolute;
+        z-index: 2;
+        top: 13px;
+        left: 13px;
+        padding: 7px 9px;
+        border: 1px solid rgb(239 232 251 / 27%);
+        border-radius: 999px;
+        background: rgb(14 17 38 / 72%);
+        color: #f0edf8;
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 0.11em;
+        backdrop-filter: blur(8px);
+      }
+
+      .gallery-caption {
+        position: absolute;
+        z-index: 2;
+        right: 17px;
+        bottom: 17px;
+        left: 17px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 12px;
+        color: #f3effa;
+      }
+
+      .gallery-caption strong {
+        font-family: var(--display);
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+      }
+
+      .gallery-caption span {
+        color: #f18bd7;
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-align: right;
+        text-transform: uppercase;
+      }
+
+      .idea-section {
+        padding: 120px 0 130px;
+      }
+
+      .idea-grid {
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        align-items: start;
+        gap: 10%;
+      }
+
+      .section-kicker {
+        margin: 0 0 16px;
+        color: #c7afd2;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+      }
+
+      .idea-heading h2,
+      .approach-heading h2,
+      .closing-copy h2 {
+        margin: 0;
+        font-family: var(--display);
+        font-size: clamp(43px, 5vw, 67px);
+        font-weight: 600;
+        letter-spacing: -0.08em;
+        line-height: 1.02;
+      }
+
+      .idea-heading h2 span,
+      .approach-heading h2 span {
+        color: #ee80d5;
+        font-family: Georgia, "Times New Roman", serif;
+        font-style: italic;
+        font-weight: 400;
+      }
+
+      .idea-copy {
+        padding-top: 39px;
+      }
+
+      .idea-copy > p {
+        max-width: 520px;
+        margin: 0;
+        color: #b3bad2;
+        font-size: 14px;
+        line-height: 1.85;
+      }
+
+      .idea-signoff {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 26px;
+        color: #d8d5e9;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+      }
+
+      .idea-signoff svg {
+        width: 17px;
+        height: 17px;
+        color: var(--leaf);
+      }
+
+      .principles {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+        margin-top: 75px;
+      }
+
+      .principle {
+        min-height: 178px;
+        padding: 18px 18px 20px;
+        border-top: 1px solid #30364f;
+      }
+
+      .principle-number {
+        display: block;
+        margin-bottom: 26px;
+        color: #c4a8d3;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+      }
+
+      .principle h3 {
+        margin: 0 0 8px;
+        font-family: var(--display);
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+      }
+
+      .principle p {
+        max-width: 260px;
+        margin: 0;
+        color: #abb4cf;
+        font-size: 11px;
+        line-height: 1.7;
+      }
+
+      .approach-section {
+        padding: 100px 0 106px;
+        background: var(--deep);
+        color: #f4f1fb;
+      }
+
+      .approach-grid {
+        display: grid;
+        grid-template-columns: 0.92fr 1.08fr;
+        gap: 9%;
+      }
+
+      .approach-section .section-kicker {
+        color: #ed78d5;
+      }
+
+      .approach-heading h2 {
+        max-width: 520px;
+        font-size: clamp(45px, 5.2vw, 69px);
+      }
+
+      .approach-heading h2 span {
+        color: var(--leaf);
+      }
+
+      .approach-summary {
+        max-width: 430px;
+        margin: 22px 0 0;
+        color: #c0bfd8;
+        font-size: 13px;
+        line-height: 1.85;
+      }
+
+      .approach-steps {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 19px;
+        padding-top: 41px;
+      }
+
+      .approach-step {
+        padding-top: 15px;
+        border-top: 1px solid rgb(246 247 238 / 25%);
+      }
+
+      .approach-step-number {
+        display: block;
+        margin-bottom: 31px;
+        color: var(--leaf);
+        font-family: var(--display);
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .approach-step h3 {
+        margin: 0 0 8px;
+        font-family: var(--display);
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .approach-step p {
+        margin: 0;
+        color: #bcbdd4;
+        font-size: 10px;
+        line-height: 1.75;
+      }
+
+      .closing-section {
+        position: relative;
+        overflow: hidden;
+        padding: 105px 0 97px;
+      }
+
+      .closing-section::before {
+        position: absolute;
+        top: -175px;
+        right: -65px;
+        width: 460px;
+        height: 460px;
+        border: 1px solid #2a3150;
+        border-radius: 50%;
+        box-shadow: 0 0 0 45px rgb(52 49 100 / 30%), 0 0 0 90px rgb(52 49 100 / 20%);
+        content: "";
+        pointer-events: none;
+      }
+
+      .closing-copy {
+        position: relative;
+        z-index: 1;
+        max-width: 760px;
+      }
+
+      .closing-copy h2 {
+        font-size: clamp(45px, 7vw, 91px);
+      }
+
+      .closing-copy h2 span {
+        color: #ee80d5;
+        font-family: Georgia, "Times New Roman", serif;
+        font-style: italic;
+        font-weight: 400;
+      }
+
+      .closing-copy p:last-child {
+        margin: 20px 0 0;
+        color: #b3b8cf;
+        font-size: 13px;
+      }
+
+      .footer {
+        padding: 26px 0 21px;
+        border-top: 1px solid var(--line);
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .footer-inner .wordmark {
+        font-size: 22px;
+      }
+
+      .footer-inner > p {
+        margin: 0;
+        color: #a5acc6;
+        font-size: 9px;
+      }
+
+      .stage-fallback-note {
+        position: absolute;
+        z-index: 5;
+        top: 52px;
+        left: 17px;
+        max-width: 210px;
+        color: #b4bbd2;
+        font-size: 8px;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .hero-copy,
+        .printer-stage {
+          animation: rise-in 700ms both cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .printer-stage {
+          animation-delay: 100ms;
+        }
+
+        @keyframes rise-in {
+          from {
+            opacity: 0;
+            transform: translateY(16px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .motion-ready .reveal {
+          opacity: 0;
+          transform: translateY(15px);
+          transition:
+            opacity 550ms ease,
+            transform 550ms ease;
+        }
+
+        .motion-ready .reveal.is-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 1080px) {
+        .header-inner,
+        .hero,
+        .section-shell {
+          width: min(100% - 52px, var(--page-width));
+        }
+
+        .site-nav {
+          gap: 26px;
+          margin-left: 34px;
+        }
+
+        .hero {
+          min-height: 650px;
+          grid-template-columns: minmax(290px, 0.78fr) minmax(0, 1.22fr);
+          gap: 30px;
+        }
+
+        .hero h1 {
+          font-size: clamp(83px, 11vw, 125px);
+        }
+
+        .printer-stage {
+          min-height: 505px;
+        }
+
+        .idea-grid,
+        .approach-grid {
+          gap: 6%;
+        }
+      }
+
+      @media (max-width: 760px) {
+        html {
+          scroll-padding-top: 75px;
+        }
+
+        .announcement {
+          min-height: 30px;
+          font-size: 8px;
+        }
+
+        .header-inner,
+        .hero,
+        .section-shell {
+          width: min(100% - 38px, var(--page-width));
+        }
+
+        .header-inner {
+          min-height: 68px;
+        }
+
+        .wordmark {
+          font-size: 25px;
+        }
+
+        .menu-toggle {
+          display: grid;
+        }
+
+        .header-cta {
+          min-height: 39px;
+          margin-left: auto;
+          padding: 0 11px;
+          font-size: 9px;
+        }
+
+        .site-nav {
+          position: absolute;
+          top: calc(100% + 1px);
+          right: -19px;
+          left: -19px;
+          display: none;
+          align-items: stretch;
+          gap: 0;
+          margin: 0;
+          padding: 9px 19px 15px;
+          border-bottom: 1px solid var(--line);
+          background: var(--paper);
+        }
+
+        .site-nav.is-open {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .site-nav a {
+          padding: 13px 0;
+          border-bottom: 1px solid var(--line);
+          font-size: 13px;
+        }
+
+        .site-nav a::after {
+          display: none;
+        }
+
+        .hero {
+          min-height: auto;
+          grid-template-columns: 1fr;
+          gap: 35px;
+          padding: 56px 0 55px;
+        }
+
+        .hero-copy {
+          padding-bottom: 0;
+        }
+
+        .eyebrow {
+          margin-bottom: 20px;
+        }
+
+        .hero h1 {
+          font-size: clamp(90px, 19vw, 137px);
+        }
+
+        .hero-deck {
+          max-width: 500px;
+          margin-top: 22px;
+          font-size: clamp(23px, 6vw, 29px);
+        }
+
+        .hero-description {
+          max-width: 550px;
+          font-size: 12px;
+        }
+
+        .hero-ctas {
+          margin-top: 23px;
+        }
+
+        .hero-footnote {
+          margin-top: 26px;
+        }
+
+        .printer-stage {
+          width: min(100%, 610px);
+          min-height: 0;
+          aspect-ratio: 1.08;
+          justify-self: center;
+        }
+
+        .stage-instruction {
+          bottom: 22px;
+          display: none;
+        }
+
+        .stage-control-bar {
+          bottom: 12px;
+          left: 12px;
+          right: 12px;
+        }
+
+        .print-status {
+          min-width: 115px;
+          padding: 8px 9px;
+        }
+
+        .scene-button {
+          min-height: 33px;
+          padding: 0 9px;
+          font-size: 8px;
+        }
+
+        .scene-button.icon-only {
+          width: 33px;
+        }
+
+        .marquee-track {
+          gap: 21px;
+          padding: 14px 0;
+        }
+
+        .marquee span {
+          font-size: 9px;
+        }
+
+        .art-section {
+          padding: 74px 0 78px;
+        }
+
+        .art-heading {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 14px;
+          margin-bottom: 23px;
+        }
+
+        .art-heading h2 {
+          font-size: clamp(40px, 9.5vw, 56px);
+        }
+
+        .art-heading > p {
+          font-size: 11px;
+        }
+
+        .image-gallery {
+          grid-template-columns: 1.15fr 0.85fr;
+          gap: 10px;
+        }
+
+        .gallery-card {
+          min-height: 275px;
+        }
+
+        .gallery-card:first-child {
+          grid-column: 1 / -1;
+          min-height: 300px;
+        }
+
+        .idea-section {
+          padding: 77px 0 83px;
+        }
+
+        .idea-grid,
+        .approach-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+
+        .idea-heading h2,
+        .approach-heading h2 {
+          font-size: clamp(44px, 10vw, 60px);
+        }
+
+        .idea-copy {
+          padding-top: 0;
+        }
+
+        .idea-copy > p {
+          font-size: 13px;
+        }
+
+        .principles {
+          gap: 12px;
+          margin-top: 48px;
+        }
+
+        .principle {
+          min-height: 160px;
+          padding: 14px 10px 15px;
+        }
+
+        .principle-number {
+          margin-bottom: 20px;
+        }
+
+        .principle h3 {
+          font-size: 13px;
+        }
+
+        .principle p {
+          font-size: 9px;
+        }
+
+        .approach-section {
+          padding: 73px 0 78px;
+        }
+
+        .approach-summary {
+          margin-top: 17px;
+          font-size: 12px;
+        }
+
+        .approach-steps {
+          gap: 12px;
+          padding-top: 17px;
+        }
+
+        .approach-step-number {
+          margin-bottom: 23px;
+        }
+
+        .approach-step h3 {
+          font-size: 12px;
+        }
+
+        .approach-step p {
+          font-size: 9px;
+        }
+
+        .closing-section {
+          padding: 73px 0 72px;
+        }
+
+        .closing-section::before {
+          top: -115px;
+          right: -260px;
+          width: 370px;
+          height: 370px;
+        }
+
+        .closing-copy h2 {
+          font-size: clamp(47px, 11vw, 76px);
+        }
+
+        .closing-copy p:last-child {
+          font-size: 11px;
+        }
+
+        .footer-inner {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+
+      @media (max-width: 430px) {
+        .header-inner,
+        .hero,
+        .section-shell {
+          width: calc(100% - 30px);
+        }
+
+        .site-nav {
+          right: -15px;
+          left: -15px;
+          padding-right: 15px;
+          padding-left: 15px;
+        }
+
+        .header-cta {
+          gap: 6px;
+          padding: 0 9px;
+        }
+
+        .hero h1 {
+          font-size: clamp(84px, 20vw, 105px);
+        }
+
+        .hero-ctas {
+          gap: 12px;
+        }
+
+        .button-primary {
+          min-height: 46px;
+          padding: 0 15px;
+          font-size: 10px;
+        }
+
+        .text-link {
+          font-size: 10px;
+        }
+
+        .image-gallery {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-card,
+        .gallery-card:first-child {
+          min-height: 250px;
+          grid-column: auto;
+        }
+
+        .printer-stage {
+          aspect-ratio: 0.95;
+        }
+
+        .stage-meta {
+          top: 10px;
+          right: 10px;
+          left: 10px;
+        }
+
+        .speed-option {
+          padding: 0 7px;
+        }
+
+        .speed-option .speed-name {
+          display: none;
+        }
+
+        .stage-label {
+          min-height: 27px;
+          padding: 0 8px;
+          font-size: 7px;
+        }
+
+        .principles {
+          grid-template-columns: 1fr;
+          gap: 5px;
+          margin-top: 39px;
+        }
+
+        .principle {
+          min-height: 0;
+          display: grid;
+          grid-template-columns: 28px 1fr;
+          gap: 1px 10px;
+          padding: 14px 2px 16px;
+        }
+
+        .principle-number {
+          grid-row: span 2;
+          margin: 2px 0 0;
+        }
+
+        .principle h3 {
+          margin-bottom: 5px;
+        }
+
+        .principle p {
+          max-width: none;
+          font-size: 10px;
+        }
+
+        .approach-steps {
+          grid-template-columns: 1fr;
+          gap: 16px;
+          padding-top: 9px;
+        }
+
+        .approach-step {
+          display: grid;
+          grid-template-columns: 31px 1fr;
+          column-gap: 8px;
+          padding-top: 12px;
+        }
+
+        .approach-step-number {
+          grid-row: span 2;
+          margin: 0;
+        }
+
+        .approach-step h3 {
+          margin-bottom: 4px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="announcement">
+      An independent 3D-printing studio <span aria-hidden="true">✳</span>
+    </div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="wordmark" href="#home" aria-label="Kuby home">
+          <span class="wordmark-flower" aria-hidden="true"></span>
+          Kuby
+        </a>
+
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+          <a href="#idea">The idea</a>
+          <a href="#approach">Our approach</a>
+          <a href="#studio">The studio</a>
+        </nav>
+
+        <a
+          class="header-cta shop-link"
+          href="https://www.noon.com/uae-en/seller/p-30100/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Shop Kuby on Noon"
+        >
+          Shop
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        <button
+          class="menu-toggle"
+          id="menu-toggle"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> Thoughtful things, made differently</p>
+          <h1 id="hero-title">KUBY<span>.</span></h1>
+          <p class="hero-deck">A little more imagination in the everyday.</p>
+          <p class="hero-description">
+            Kuby is an independent 3D-printing studio turning good ideas into useful, joy-bringing objects—from clever desk essentials and sculptural table lamps to the filament behind your next idea.
+          </p>
+          <div class="hero-ctas">
+            <a class="button-primary" href="#idea">
+              Get to know Kuby
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+            <a class="text-link" href="#approach">How we make things</a>
+          </div>
+          <p class="hero-footnote"><span aria-hidden="true"></span> Designed with curiosity. Printed one layer at a time.</p>
+        </div>
+
+        <figure class="printer-stage" id="studio" aria-label="Interactive 3D printer printing the word KUBY">
+          <canvas
+            class="printer-canvas"
+            id="printer-canvas"
+            role="img"
+            aria-label="A three-dimensional printer builds the letters KUBY layer by layer. Drag to rotate the view."
+          ></canvas>
+
+          <div class="scene-fallback" aria-hidden="true">
+            <svg viewBox="0 0 900 620" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="fallback-bg" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#26345b" />
+                  <stop offset="1" stop-color="#10172b" />
+                </linearGradient>
+                <linearGradient id="fallback-bed" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#51558a" />
+                  <stop offset="1" stop-color="#252c4b" />
+                </linearGradient>
+                <filter id="fallback-shadow" x="-30%" y="-30%" width="160%" height="170%">
+                  <feDropShadow dx="0" dy="18" stdDeviation="15" flood-color="#050714" flood-opacity=".58" />
+                </filter>
+              </defs>
+              <rect width="900" height="620" fill="url(#fallback-bg)" />
+              <circle cx="465" cy="275" r="209" fill="#5c427d" opacity=".34" />
+              <g fill="none" stroke="#8b91b0" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M184 100v368m532-368v368M184 101h532M184 114h532" stroke-width="13" />
+                <path d="M216 117v312m468-312v312" stroke-width="5" opacity=".7" />
+                <path d="M217 222h466" stroke-width="13" />
+              </g>
+              <g filter="url(#fallback-shadow)">
+                <path d="M180 445h540v54H180z" fill="#1d2745" />
+                <path d="m215 433 468 0-48 43H264z" fill="url(#fallback-bed)" />
+                <path d="m288 427 323 0-49 26H337z" fill="#4a5281" />
+                <text x="449" y="417" fill="#f078d6" font-family="Manrope, sans-serif" font-size="61" font-weight="800" letter-spacing="-5" text-anchor="middle" transform="skewX(-10)">KUBY</text>
+                <rect x="414" y="222" width="70" height="37" rx="5" fill="#de55bd" />
+                <path d="M429 258h40l-7 33h-26z" fill="#747a9e" />
+                <path d="m439 290 20 0-4 23h-12z" fill="#9281ec" />
+              </g>
+              <g transform="translate(278 111)">
+                <ellipse cx="0" cy="0" rx="44" ry="45" fill="#8576df" />
+                <ellipse cx="0" cy="0" rx="15" ry="16" fill="#1a2040" />
+                <circle cx="0" cy="0" r="35" fill="none" stroke="#bfadff" stroke-width="5" />
+                <path d="M-40 0c0-23 18-41 40-41s40 18 40 41" fill="none" stroke="#c5aaff" stroke-width="4" />
+              </g>
+              <path d="M308 110c25 14 29 24 59 29s37 18 37 43" fill="none" stroke="#f17acb" stroke-width="4" />
+              <text x="450" y="552" fill="#bec5df" font-family="DM Sans, sans-serif" font-size="12" font-weight="700" letter-spacing="3" text-anchor="middle">A LITTLE BIT OF KUBY, LAYER BY LAYER</text>
+            </svg>
+          </div>
+
+          <div class="stage-meta">
+            <div class="stage-label" aria-hidden="true"><span></span> Kuby / Studio printer 01</div>
+            <div class="speed-control" role="group" aria-label="Printer animation speed">
+              <button
+                class="speed-option"
+                id="speed-realtime"
+                type="button"
+                aria-pressed="true"
+                aria-label="Real-time printing at normal speed"
+              >
+                <span>1×</span><span class="speed-name">Real-time</span>
+              </button>
+              <button
+                class="speed-option"
+                id="speed-fast"
+                type="button"
+                aria-pressed="false"
+                aria-label="Fast-forward printing at five times speed"
+              >
+                <span>5×</span><span class="speed-name">Fast-forward</span>
+              </button>
+            </div>
+          </div>
+          <div class="stage-instruction" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 11V6a2 2 0 1 1 4 0v5-2a2 2 0 1 1 4 0v3-1a2 2 0 1 1 4 0v5c0 3-2 5-5 5h-2c-2 0-3-1-4-2l-3-3a2 2 0 0 1 3-3l2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            Drag to explore
+          </div>
+          <div class="stage-control-bar">
+            <div class="print-status" id="print-status">
+              <span class="print-status-label" id="print-status-label">Loading printer</span>
+              <span class="print-status-count" id="print-status-count">Getting the studio ready</span>
+            </div>
+            <div class="stage-controls">
+              <button class="scene-button" id="print-toggle" type="button" aria-pressed="false" aria-label="Pause the print">
+                <svg id="toggle-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                <span id="toggle-label">Pause</span>
+              </button>
+              <button class="scene-button icon-only" id="print-replay" type="button" aria-label="Replay the KUBY print">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 11a8 8 0 1 1 2.1 5.4M4 5v6h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </button>
+            </div>
+          </div>
+          <p class="stage-fallback-note" id="fallback-note" hidden>3D preview unavailable. The Kuby spirit is still very much here.</p>
+        </figure>
+      </section>
+
+      <div class="marquee" aria-label="Made with curiosity, built one layer at a time, designed for everyday life">
+        <div class="marquee-track" aria-hidden="true">
+          <span>MADE WITH CURIOSITY</span><b>✳</b><span>BUILT ONE LAYER AT A TIME</span><b>✳</b><span>DESIGNED FOR EVERYDAY LIFE</span><b>✳</b>
+          <span>MADE WITH CURIOSITY</span><b>✳</b><span>BUILT ONE LAYER AT A TIME</span><b>✳</b><span>DESIGNED FOR EVERYDAY LIFE</span><b>✳</b>
+          <span>MADE WITH CURIOSITY</span><b>✳</b><span>BUILT ONE LAYER AT A TIME</span><b>✳</b><span>DESIGNED FOR EVERYDAY LIFE</span><b>✳</b>
+        </div>
+      </div>
+
+      <section class="art-section" aria-labelledby="art-title">
+        <div class="section-shell">
+          <div class="art-heading reveal">
+            <div>
+              <p class="section-kicker">Kuby, in colour</p>
+              <h2 id="art-title">Good ideas take <span>interesting shapes.</span></h2>
+            </div>
+            <p>Our world is built from curious forms, bold colour, and the satisfying process of making something real.</p>
+          </div>
+          <div class="image-gallery" aria-label="Kuby studio and design inspiration">
+            <figure class="gallery-card reveal">
+              <img
+                src="./art-printer.svg"
+                alt="Close-up of a 3D printer working under colourful studio lighting"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="gallery-index">01 / PROCESS</span>
+              <figcaption class="gallery-caption"><strong>Made layer by layer</strong><span>Ideas into objects</span></figcaption>
+            </figure>
+            <figure class="gallery-card reveal">
+              <img
+                src="./art-shapes.svg"
+                alt="Iridescent abstract 3D shapes against a soft gradient"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="gallery-index">02 / FORM</span>
+              <figcaption class="gallery-caption"><strong>Curiosity in shape</strong><span>Unexpected forms</span></figcaption>
+            </figure>
+            <figure class="gallery-card reveal">
+              <img
+                src="./art-studio.svg"
+                alt="A 3D printer and colorful prototypes in a maker studio"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="gallery-index">03 / STUDIO</span>
+              <figcaption class="gallery-caption"><strong>A place to experiment</strong><span>Room for new ideas</span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="idea-section" id="idea" aria-labelledby="idea-title">
+        <div class="section-shell">
+          <div class="idea-grid">
+            <div class="idea-heading reveal">
+              <p class="section-kicker">The idea behind Kuby</p>
+              <h2 id="idea-title">The little things deserve a <span>point of view.</span></h2>
+            </div>
+            <div class="idea-copy reveal">
+              <p>
+                We believe everyday objects can be practical and full of personality. Kuby brings design and 3D printing together to make useful things feel considered, colourful, and a little unexpected.
+              </p>
+              <div class="idea-signoff">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8m0-12.8L5.6 18.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" /></svg>
+                Designed for real days and curious minds
+              </div>
+            </div>
+          </div>
+
+          <div class="principles" aria-label="What guides Kuby">
+            <article class="principle reveal">
+              <span class="principle-number">01 / PLAY</span>
+              <h3>Curiosity comes first</h3>
+              <p>We follow a good question, a fresh shape, or a colour combination that makes us look twice.</p>
+            </article>
+            <article class="principle reveal">
+              <span class="principle-number">02 / PURPOSE</span>
+              <h3>Useful has its own beauty</h3>
+              <p>We give everyday essentials thoughtful details and forms worth keeping close.</p>
+            </article>
+            <article class="principle reveal">
+              <span class="principle-number">03 / PROCESS</span>
+              <h3>Made layer by layer</h3>
+              <p>3D printing gives ideas room to become real, one measured layer at a time.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="approach-section" id="approach" aria-labelledby="approach-title">
+        <div class="section-shell approach-grid">
+          <div class="approach-heading reveal">
+            <p class="section-kicker">From thought to thing</p>
+            <h2 id="approach-title">A good idea takes <span>shape.</span></h2>
+            <p class="approach-summary">
+              We keep the process close to the idea: design with intention, print with care, and finish every piece ready for its place in your day.
+            </p>
+          </div>
+          <div class="approach-steps reveal" aria-label="How Kuby brings ideas to life">
+            <article class="approach-step">
+              <span class="approach-step-number">01</span>
+              <h3>Imagine</h3>
+              <p>We sketch, test, and refine until the form feels just right.</p>
+            </article>
+            <article class="approach-step">
+              <span class="approach-step-number">02</span>
+              <h3>Print</h3>
+              <p>Our printers turn the design into tangible layers and colour.</p>
+            </article>
+            <article class="approach-step">
+              <span class="approach-step-number">03</span>
+              <h3>Make it yours</h3>
+              <p>Every finished idea is ready to find a place in your world.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing-section" aria-labelledby="closing-title">
+        <div class="section-shell closing-copy reveal">
+          <p class="section-kicker">That’s Kuby</p>
+          <h2 id="closing-title">Everyday, with a <span>twist.</span></h2>
+          <p>Thoughtful design. Tactile things. A little more delight in the details.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="section-shell footer-inner">
+        <a class="wordmark" href="#home" aria-label="Kuby home">
+          <span class="wordmark-flower" aria-hidden="true"></span>
+          Kuby
+        </a>
+        <p>© <span id="year"></span> Kuby. Made with curiosity.</p>
+      </div>
+    </footer>
+
+    <script src="./kuby-three.js"></script>
+    <script>
+      const stage = document.getElementById("studio");
+      const canvas = document.getElementById("printer-canvas");
+      const fallbackNote = document.getElementById("fallback-note");
+      const statusCard = document.getElementById("print-status");
+      const statusLabel = document.getElementById("print-status-label");
+      const statusCount = document.getElementById("print-status-count");
+      const toggleButton = document.getElementById("print-toggle");
+      const toggleLabel = document.getElementById("toggle-label");
+      const toggleIcon = document.getElementById("toggle-icon");
+      const replayButton = document.getElementById("print-replay");
+      const realtimeButton = document.getElementById("speed-realtime");
+      const fastForwardButton = document.getElementById("speed-fast");
+      const menuToggle = document.getElementById("menu-toggle");
+      const siteNav = document.getElementById("site-nav");
+
+      let isPlaying = true;
+      let fastForward = false;
+      let printElapsed = 0;
+      let resetPrint = () => {};
+      const layerCount = 32;
+      const secondsPerLayer = 1.5;
+      const fastForwardMultiplier = 5;
+
+      const updateToggle = () => {
+        toggleButton.setAttribute("aria-pressed", String(!isPlaying));
+        toggleButton.setAttribute("aria-label", isPlaying ? "Pause the print" : "Resume the print");
+        toggleLabel.textContent = isPlaying ? "Pause" : "Resume";
+        toggleIcon.innerHTML = isPlaying
+          ? '<path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />'
+          : '<path d="m9 6 10 6-10 6V6Z" fill="currentColor" />';
+        statusCard.classList.toggle("is-paused", !isPlaying);
+      };
+
+      toggleButton.addEventListener("click", () => {
+        isPlaying = !isPlaying;
+        updateToggle();
+        if (!isPlaying) statusLabel.textContent = "Print paused";
+        else statusLabel.textContent = printElapsed >= layerCount * secondsPerLayer ? "KUBY is ready" : "Printing KUBY";
+      });
+
+      replayButton.addEventListener("click", () => {
+        printElapsed = 0;
+        isPlaying = true;
+        resetPrint();
+        updateToggle();
+        statusLabel.textContent = isPlaying ? "Printing KUBY" : "Print paused";
+      });
+
+      const setPrintSpeed = (isFast) => {
+        fastForward = isFast;
+        realtimeButton.setAttribute("aria-pressed", String(!isFast));
+        fastForwardButton.setAttribute("aria-pressed", String(isFast));
+      };
+
+      realtimeButton.addEventListener("click", () => setPrintSpeed(false));
+      fastForwardButton.addEventListener("click", () => setPrintSpeed(true));
+
+      menuToggle.addEventListener("click", () => {
+        const open = menuToggle.getAttribute("aria-expanded") !== "true";
+        menuToggle.setAttribute("aria-expanded", String(open));
+        menuToggle.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+        siteNav.classList.toggle("is-open", open);
+      });
+
+      siteNav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.setAttribute("aria-label", "Open navigation menu");
+          siteNav.classList.remove("is-open");
+        });
+      });
+
+      try {
+        const { THREE, OrbitControls, FontLoader, TextGeometry, fontData } = window.KubyThree;
+
+        const scene = new THREE.Scene();
+        const backgroundColor = new THREE.Color("#18213a");
+        scene.background = backgroundColor;
+        scene.fog = new THREE.Fog(backgroundColor, 13, 24);
+
+        const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 80);
+        camera.position.set(8.1, 6.9, 10.1);
+
+        const renderer = new THREE.WebGLRenderer({
+          canvas,
+          antialias: true,
+          alpha: false,
+          powerPreference: "high-performance",
+        });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.12;
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+        const controls = new OrbitControls(camera, canvas);
+        controls.target.set(0, 1.65, 0);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.075;
+        controls.enablePan = false;
+        controls.minDistance = 8.2;
+        controls.maxDistance = 15.5;
+        controls.minPolarAngle = 0.36;
+        controls.maxPolarAngle = 1.25;
+        controls.update();
+
+        scene.add(new THREE.HemisphereLight(0xdad8f2, 0x35365d, 2.4));
+
+        const keyLight = new THREE.DirectionalLight(0xf4d7f5, 3.6);
+        keyLight.position.set(-4.5, 9, 6);
+        keyLight.castShadow = true;
+        keyLight.shadow.mapSize.set(1536, 1536);
+        keyLight.shadow.camera.left = -8;
+        keyLight.shadow.camera.right = 8;
+        keyLight.shadow.camera.top = 9;
+        keyLight.shadow.camera.bottom = -5;
+        keyLight.shadow.bias = -0.0002;
+        scene.add(keyLight);
+
+        const fillLight = new THREE.DirectionalLight(0x9aaeff, 1.9);
+        fillLight.position.set(6, 5, -5);
+        scene.add(fillLight);
+
+        const warmLight = new THREE.PointLight(0xe94ebc, 1.05, 12);
+        warmLight.position.set(-3, 3.7, 2.8);
+        scene.add(warmLight);
+
+        const mat = (color, roughness = 0.55, metalness = 0) =>
+          new THREE.MeshStandardMaterial({ color, roughness, metalness });
+
+        const frameMaterial = mat("#adb2cf", 0.3, 0.68);
+        const railMaterial = mat("#5c628e", 0.32, 0.52);
+        const bodyMaterial = mat("#293353", 0.45, 0.12);
+        const bedMaterial = mat("#202b49", 0.72, 0.08);
+        const bedEdgeMaterial = mat("#151d35", 0.44, 0.22);
+        const detailMaterial = mat("#7881b5", 0.52, 0.3);
+        const coralMaterial = mat("#dc54b6", 0.35, 0.06);
+        const goldMaterial = mat("#8576e8", 0.38, 0.18);
+        const blackMaterial = mat("#11182d", 0.38, 0.28);
+
+        const addBox = (parent, width, height, depth, material, position, castShadow = true) => {
+          const mesh = new THREE.Mesh(new THREE.BoxGeometry(width, height, depth), material);
+          mesh.position.set(position[0], position[1], position[2]);
+          mesh.castShadow = castShadow;
+          mesh.receiveShadow = true;
+          parent.add(mesh);
+          return mesh;
+        };
+
+        const addVerticalCylinder = (parent, radius, height, material, position, segments = 20) => {
+          const mesh = new THREE.Mesh(new THREE.CylinderGeometry(radius, radius, height, segments), material);
+          mesh.position.set(position[0], position[1], position[2]);
+          mesh.castShadow = true;
+          mesh.receiveShadow = true;
+          parent.add(mesh);
+          return mesh;
+        };
+
+        const ground = new THREE.Mesh(
+          new THREE.PlaneGeometry(100, 100),
+          mat("#111a30", 0.92),
+        );
+        ground.rotation.x = -Math.PI / 2;
+        ground.position.y = -0.21;
+        ground.receiveShadow = true;
+        scene.add(ground);
+
+        const printer = new THREE.Group();
+        scene.add(printer);
+
+        // A low, solid base and the heated print bed.
+        addBox(printer, 8.05, 0.36, 5.42, bodyMaterial, [0, 0, 0]);
+        addBox(printer, 7.2, 0.15, 4.72, frameMaterial, [0, 0.245, 0], false);
+        addBox(printer, 6.9, 0.1, 4.42, bedEdgeMaterial, [0, 0.37, 0]);
+        addBox(printer, 6.78, 0.065, 4.3, bedMaterial, [0, 0.452, 0], false);
+
+        // Fine registration marks around the bed remain visible around the printed text.
+        const gridMaterial = new THREE.MeshStandardMaterial({
+          color: "#707bb5",
+          roughness: 0.78,
+          transparent: true,
+          opacity: 0.3,
+        });
+        for (let x = -2.8; x <= 2.8; x += 0.4) {
+          addBox(printer, 0.012, 0.004, 3.95, gridMaterial, [x, 0.486, 0], false);
+        }
+        for (let z = -1.8; z <= 1.8; z += 0.4) {
+          addBox(printer, 6.35, 0.004, 0.012, gridMaterial, [0, 0.486, z], false);
+        }
+        const bedCenter = addBox(printer, 0.055, 0.006, 0.055, goldMaterial, [0, 0.49, 0], false);
+
+        // The open-frame printer enclosure.
+        const frameX = 3.62;
+        const frameZ = 2.28;
+        const frameHeight = 4.7;
+        for (const x of [-frameX, frameX]) {
+          for (const z of [-frameZ, frameZ]) {
+            addVerticalCylinder(printer, 0.065, frameHeight, frameMaterial, [x, 2.17, z], 18);
+            addVerticalCylinder(printer, 0.091, 0.13, blackMaterial, [x, 4.49, z], 18);
+          }
+        }
+        addBox(printer, 7.48, 0.16, 0.16, frameMaterial, [0, 4.48, -frameZ], false);
+        addBox(printer, 7.48, 0.16, 0.16, frameMaterial, [0, 4.48, frameZ], false);
+        addBox(printer, 0.16, 0.16, 4.56, frameMaterial, [-frameX, 4.48, 0], false);
+        addBox(printer, 0.16, 0.16, 4.56, frameMaterial, [frameX, 4.48, 0], false);
+
+        // A colour spool and its arbor sit behind the moving print head.
+        const spoolPosition = new THREE.Vector3(-2.35, 4.03, -2.02);
+        const spool = new THREE.Group();
+        spool.position.copy(spoolPosition);
+        printer.add(spool);
+        const spoolCore = new THREE.Mesh(new THREE.CylinderGeometry(0.43, 0.43, 0.42, 48), coralMaterial);
+        spoolCore.rotation.x = Math.PI / 2;
+        spoolCore.castShadow = true;
+        spool.add(spoolCore);
+        for (const z of [-0.25, 0.25]) {
+          const flange = new THREE.Mesh(new THREE.CylinderGeometry(0.62, 0.62, 0.09, 48), goldMaterial);
+          flange.rotation.x = Math.PI / 2;
+          flange.position.z = z;
+          flange.castShadow = true;
+          spool.add(flange);
+          const rim = new THREE.Mesh(new THREE.TorusGeometry(0.48, 0.035, 8, 44), coralMaterial);
+          rim.position.z = z + (z > 0 ? 0.048 : -0.048);
+          spool.add(rim);
+          const hub = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.16, 0.11, 28), bodyMaterial);
+          hub.rotation.x = Math.PI / 2;
+          hub.position.z = z + (z > 0 ? 0.052 : -0.052);
+          spool.add(hub);
+        }
+        const spoolAxle = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.82, 24), frameMaterial);
+        spoolAxle.rotation.x = Math.PI / 2;
+        spool.add(spoolAxle);
+        addBox(printer, 0.17, 0.45, 0.21, railMaterial, [-2.35, 3.56, -2.02]);
+
+        const buildY = 0.49;
+        const layerHeight = 0.056;
+        const printDuration = layerCount * secondsPerLayer;
+        const printHold = 3.2;
+        const layers = [];
+        let textMinX = -2.3;
+        let textMaxX = 2.3;
+        let textCenterZ = 0;
+        let shownLayerCount = -1;
+
+        const textMaterialA = mat("#f07bd5", 0.4, 0.04);
+        const textMaterialB = mat("#c568e2", 0.44, 0.03);
+        const textGroup = new THREE.Group();
+        printer.add(textGroup);
+
+        const font = new FontLoader().parse(fontData);
+
+        const layerGeometry = new TextGeometry("KUBY", {
+          font,
+          size: 1.42,
+          depth: layerHeight,
+          curveSegments: 10,
+          bevelEnabled: false,
+        });
+        layerGeometry.rotateX(-Math.PI / 2);
+        layerGeometry.computeBoundingBox();
+        const bounds = layerGeometry.boundingBox;
+        textMinX = bounds.min.x;
+        textMaxX = bounds.max.x;
+        const centerX = (bounds.min.x + bounds.max.x) / 2;
+        textCenterZ = (bounds.min.z + bounds.max.z) / 2;
+        layerGeometry.translate(-centerX, buildY - bounds.min.y, -textCenterZ);
+        layerGeometry.computeBoundingBox();
+        textMinX = layerGeometry.boundingBox.min.x;
+        textMaxX = layerGeometry.boundingBox.max.x;
+
+        for (let index = 0; index < layerCount; index += 1) {
+          const layer = new THREE.Mesh(layerGeometry, index % 2 === 0 ? textMaterialA : textMaterialB);
+          layer.position.y = index * layerHeight;
+          layer.castShadow = true;
+          layer.receiveShadow = true;
+          layer.visible = false;
+          textGroup.add(layer);
+          layers.push(layer);
+        }
+
+        // The gantry moves in depth while its carriage follows each print pass.
+        const movingRails = new THREE.Group();
+        printer.add(movingRails);
+        const railLength = 4.36;
+        const gantrySupports = [];
+        for (const x of [-3.37, 3.37]) {
+          addBox(movingRails, 0.085, 0.075, railLength, frameMaterial, [x, 0, 0], false);
+          gantrySupports.push(addBox(printer, 0.21, 0.22, 0.2, blackMaterial, [x, 2, -1.8], false));
+        }
+        const gantry = addBox(printer, 6.85, 0.14, 0.18, railMaterial, [0, 2, -1.8], false);
+
+        const printHead = new THREE.Group();
+        printer.add(printHead);
+        addBox(printHead, 0.64, 0.36, 0.49, coralMaterial, [0, 0.18, 0.02]);
+        addBox(printHead, 0.39, 0.23, 0.54, goldMaterial, [0, 0.27, 0.27]);
+        const fanRing = new THREE.Mesh(new THREE.TorusGeometry(0.105, 0.025, 7, 24), bodyMaterial);
+        fanRing.position.set(0, 0.27, 0.55);
+        printHead.add(fanRing);
+        const fanHub = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.025, 18), frameMaterial);
+        fanHub.rotation.x = Math.PI / 2;
+        fanHub.position.set(0, 0.27, 0.56);
+        printHead.add(fanHub);
+        addBox(printHead, 0.3, 0.16, 0.3, blackMaterial, [0, -0.12, 0]);
+        const nozzle = new THREE.Mesh(new THREE.ConeGeometry(0.13, 0.34, 18), goldMaterial);
+        nozzle.rotation.z = Math.PI;
+        nozzle.position.set(0, -0.35, 0);
+        nozzle.castShadow = true;
+        printHead.add(nozzle);
+        const nozzleTip = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.055, 14), blackMaterial);
+        nozzleTip.position.set(0, -0.51, 0);
+        printHead.add(nozzleTip);
+
+        const filamentGeometry = new THREE.BufferGeometry();
+        const filamentVertexCount = 22;
+        const filamentPositions = new Float32Array(filamentVertexCount * 3);
+        filamentGeometry.setAttribute("position", new THREE.BufferAttribute(filamentPositions, 3));
+        filamentGeometry.setDrawRange(0, filamentVertexCount);
+        const filament = new THREE.Line(
+          filamentGeometry,
+          new THREE.LineBasicMaterial({ color: "#ff76d8", transparent: true, opacity: 0.98 }),
+        );
+        filament.frustumCulled = false;
+        printer.add(filament);
+
+        const clock = new THREE.Clock();
+
+        const updateSize = () => {
+          const width = stage.clientWidth;
+          const height = stage.clientHeight;
+          if (!width || !height) return;
+          renderer.setSize(width, height, false);
+          camera.aspect = width / height;
+          camera.updateProjectionMatrix();
+        };
+
+        const resizeObserver = new ResizeObserver(updateSize);
+        resizeObserver.observe(stage);
+        updateSize();
+
+        const updateFilament = (headX, headY, headZ) => {
+          const start = new THREE.Vector3(spoolPosition.x + 0.34, spoolPosition.y - 0.28, spoolPosition.z + 0.36);
+          const controlA = new THREE.Vector3(spoolPosition.x + 0.84, spoolPosition.y - 0.22, spoolPosition.z + 0.85);
+          const controlB = new THREE.Vector3(headX - 0.8, Math.max(headY + 0.18, 2.1), headZ - 0.45);
+          const end = new THREE.Vector3(headX, headY + 0.05, headZ);
+          const curve = new THREE.CatmullRomCurve3([start, controlA, controlB, end]);
+          const positionAttribute = filamentGeometry.attributes.position;
+          for (let index = 0; index < filamentVertexCount; index += 1) {
+            const point = curve.getPoint(index / (filamentVertexCount - 1));
+            positionAttribute.setXYZ(index, point.x, point.y, point.z);
+          }
+          positionAttribute.needsUpdate = true;
+        };
+
+        resetPrint = () => {
+          printElapsed = 0;
+          shownLayerCount = -1;
+          layers.forEach((layer) => {
+            layer.visible = false;
+          });
+        };
+
+        statusLabel.textContent = "Printing KUBY";
+        statusCount.textContent = `Layer 01 / ${String(layerCount).padStart(2, "0")}`;
+        stage.classList.add("is-ready");
+        fallbackNote.hidden = true;
+        updateToggle();
+
+        const animate = () => {
+          requestAnimationFrame(animate);
+          const delta = Math.min(clock.getDelta(), 0.05);
+
+          if (isPlaying) {
+            printElapsed += delta * (fastForward ? fastForwardMultiplier : 1);
+            if (printElapsed >= printDuration + printHold) resetPrint();
+          }
+
+          const complete = printElapsed >= printDuration;
+          const activeLayer = complete
+            ? layerCount - 1
+            : Math.min(layerCount - 1, Math.floor(printElapsed / secondsPerLayer));
+          const currentCount = complete ? layerCount : activeLayer + 1;
+          const withinLayer = complete ? 1 : (printElapsed % secondsPerLayer) / secondsPerLayer;
+
+          if (currentCount !== shownLayerCount) {
+            layers.forEach((layer, index) => {
+              layer.visible = index < currentCount;
+            });
+            shownLayerCount = currentCount;
+            if (complete) {
+              statusLabel.textContent = "KUBY is ready";
+              statusCount.textContent = `${layerCount} layers / one good idea`;
+            } else if (isPlaying) {
+              statusLabel.textContent = "Printing KUBY";
+              statusCount.textContent = `Layer ${String(currentCount).padStart(2, "0")} / ${String(layerCount).padStart(2, "0")}`;
+            }
+          }
+
+          if (complete) {
+            const parkedX = textMinX - 0.45;
+            printHead.position.set(parkedX, buildY + layerCount * layerHeight + 0.72, -0.8);
+            gantry.position.set(0, printHead.position.y + 0.49, printHead.position.z);
+            movingRails.position.set(0, printHead.position.y + 0.49, 0);
+            gantrySupports.forEach((support) => {
+              support.position.set(Math.sign(support.position.x) * 3.37, printHead.position.y + 0.49, printHead.position.z);
+            });
+          } else {
+            const x = THREE.MathUtils.lerp(textMinX - 0.12, textMaxX + 0.12, withinLayer);
+            const z = textCenterZ + Math.sin(withinLayer * Math.PI * 8 + activeLayer * 0.54) * 0.2;
+            const y = buildY + activeLayer * layerHeight + 0.52;
+            printHead.position.set(x, y, z);
+            gantry.position.set(0, y + 0.47, z);
+            movingRails.position.set(0, y + 0.47, 0);
+            gantrySupports.forEach((support) => {
+              support.position.set(Math.sign(support.position.x) * 3.37, y + 0.47, z);
+            });
+          }
+
+          updateFilament(printHead.position.x, printHead.position.y - 0.36, printHead.position.z);
+          controls.update();
+          renderer.render(scene, camera);
+        };
+
+        animate();
+      } catch (error) {
+        console.error("Kuby 3D printer preview could not be loaded:", error);
+        statusLabel.textContent = "Studio preview";
+        statusCount.textContent = "A little bit of Kuby, layer by layer";
+        fallbackNote.hidden = false;
+      }
+
+      document.getElementById("year").textContent = String(new Date().getFullYear());
+
+      if ("IntersectionObserver" in window && window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+        document.body.classList.add("motion-ready");
+        const observer = new IntersectionObserver(
+          (entries, activeObserver) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                activeObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 },
+        );
+        document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+      }
+    </script>
+  </body>
+</html>

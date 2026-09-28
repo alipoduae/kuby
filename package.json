@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "bundle:printer": "esbuild printer-vendor-entry.js --bundle --minify --platform=browser --format=iife --outfile=kuby-three.js"
+    "bundle:printer": "esbuild printer-vendor-entry.js --bundle --minify --platform=browser --format=iife --outfile=kuby-three.js",
+    "vendor:arabic-fonts": "node copy-tajawal.js"
   },
   "devDependencies": {
+    "@fontsource/tajawal": "^5.3.0",
     "esbuild": "0.25.0",
     "three": "0.170.0"
   }

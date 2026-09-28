@@ -6,10 +6,56 @@
     <meta
       name="description"
       content="Meet Kuby, an independent 3D-printing studio making everyday ideas a little more considered."
+      id="page-description"
     />
     <meta name="theme-color" content="#0b1020" />
     <title>Kuby — Made for the everyday</title>
     <style>
+      @font-face {
+        font-family: "Tajawal";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("./tajawal-arabic-400.woff2") format("woff2");
+        unicode-range: U+0600-06FF, U+0750-077F, U+0870-089F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200E;
+      }
+
+      @font-face {
+        font-family: "Tajawal";
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url("./tajawal-arabic-500.woff2") format("woff2");
+        unicode-range: U+0600-06FF, U+0750-077F, U+0870-089F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200E;
+      }
+
+      @font-face {
+        font-family: "Tajawal";
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url("./tajawal-arabic-700.woff2") format("woff2");
+        unicode-range: U+0600-06FF, U+0750-077F, U+0870-089F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200E;
+      }
+
+      @font-face {
+        font-family: "Tajawal";
+        font-style: normal;
+        font-weight: 800;
+        font-display: swap;
+        src: url("./tajawal-arabic-800.woff2") format("woff2");
+        unicode-range: U+0600-06FF, U+0750-077F, U+0870-089F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200E;
+      }
+
+      @font-face {
+        font-family: "Tajawal";
+        font-style: normal;
+        font-weight: 900;
+        font-display: swap;
+        src: url("./tajawal-arabic-900.woff2") format("woff2");
+        unicode-range: U+0600-06FF, U+0750-077F, U+0870-089F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200E;
+      }
+
       :root {
         color-scheme: dark;
         --paper: #0b1020;
@@ -23,6 +69,11 @@
         --sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
         --display: "Avenir Next", Avenir, "Segoe UI", sans-serif;
         --page-width: 1360px;
+      }
+
+      html[lang="ar"] {
+        --sans: "Tajawal", sans-serif;
+        --display: "Tajawal", sans-serif;
       }
 
       *,
@@ -47,6 +98,37 @@
         font-family: var(--sans);
         font-size: 16px;
         -webkit-font-smoothing: antialiased;
+      }
+
+      html[lang="ar"] .hero-deck,
+      html[lang="ar"] .art-heading h2,
+      html[lang="ar"] .idea-heading h2,
+      html[lang="ar"] .approach-heading h2,
+      html[lang="ar"] .closing-copy h2,
+      html[lang="ar"] .principle h3,
+      html[lang="ar"] .approach-step h3,
+      html[lang="ar"] .gallery-caption strong {
+        letter-spacing: 0;
+        line-height: 1.35;
+      }
+
+      html[lang="ar"] body .heading-accent {
+        font-family: var(--display);
+        font-style: normal;
+      }
+
+      html[lang="ar"] .announcement,
+      html[lang="ar"] .eyebrow,
+      html[lang="ar"] .section-kicker,
+      html[lang="ar"] .stage-label,
+      html[lang="ar"] .speed-option,
+      html[lang="ar"] .print-status-label,
+      html[lang="ar"] .gallery-index,
+      html[lang="ar"] .principle-number,
+      html[lang="ar"] .approach-step-number,
+      html[lang="ar"] .marquee span {
+        letter-spacing: 0;
+        text-transform: none;
       }
 
       button,
@@ -78,15 +160,14 @@
         padding: 7px 18px;
         background: var(--deep);
         color: #f1edf8;
-        font-size: 10px;
         font-weight: 600;
         letter-spacing: 0.12em;
         text-align: center;
         text-transform: uppercase;
       }
 
-      .announcement span {
-        margin-left: 8px;
+      .announcement-symbol {
+        margin-inline-start: 8px;
         color: var(--leaf);
       }
 
@@ -157,14 +238,13 @@
         display: flex;
         align-items: center;
         gap: clamp(25px, 4vw, 54px);
-        margin-left: 75px;
+        margin-inline-start: 75px;
       }
 
       .site-nav a {
         position: relative;
         padding: 8px 0;
         color: #b8bed8;
-        font-size: 12px;
         font-weight: 600;
         transition: color 180ms ease;
       }
@@ -190,6 +270,41 @@
         transform: scaleX(1);
       }
 
+      html[dir="rtl"] .site-nav a::after {
+        transform-origin: right;
+      }
+
+      .language-toggle {
+        min-height: 41px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        padding: 0 12px;
+        border: 1px solid #394162;
+        border-radius: 999px;
+        background: transparent;
+        color: #c8c4dd;
+        cursor: pointer;
+        font-weight: 700;
+        transition:
+          border-color 180ms ease,
+          background 180ms ease,
+          color 180ms ease;
+      }
+
+      .language-toggle:hover {
+        border-color: var(--leaf);
+        background: rgb(235 104 208 / 10%);
+        color: #fff;
+      }
+
+      .language-toggle svg {
+        width: 14px;
+        height: 14px;
+        flex: 0 0 auto;
+      }
+
       .header-cta {
         min-height: 41px;
         display: inline-flex;
@@ -198,7 +313,6 @@
         padding: 0 15px;
         border: 1px solid #394162;
         border-radius: 999px;
-        font-size: 11px;
         font-weight: 700;
         transition:
           border-color 180ms ease,
@@ -269,7 +383,6 @@
         gap: 10px;
         margin: 0 0 26px;
         color: #c1b7d0;
-        font-size: 10px;
         font-weight: 700;
         letter-spacing: 0.15em;
         text-transform: uppercase;
@@ -305,6 +418,22 @@
         line-height: 0.9;
       }
 
+      html[dir="rtl"] .hero h1 {
+        direction: ltr;
+        text-align: right;
+        unicode-bidi: isolate;
+      }
+
+      html[dir="rtl"] .button-primary svg,
+      html[dir="rtl"] .text-link svg {
+        transform: scaleX(-1);
+      }
+
+      html[dir="rtl"] .button-primary:hover svg,
+      html[dir="rtl"] .text-link:hover svg {
+        transform: translateX(-3px) scaleX(-1);
+      }
+
       .hero h1 span {
         color: var(--leaf);
       }
@@ -323,7 +452,6 @@
         max-width: 430px;
         margin: 0;
         color: var(--muted);
-        font-size: 13px;
         line-height: 1.8;
       }
 
@@ -347,7 +475,6 @@
         background: var(--ink);
         color: var(--white);
         cursor: pointer;
-        font-size: 11px;
         font-weight: 700;
         transition:
           transform 180ms ease,
@@ -379,24 +506,7 @@
         gap: 8px;
         padding: 9px 0;
         color: #d7d5e8;
-        font-size: 11px;
         font-weight: 700;
-      }
-
-      .hero-footnote {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin: 35px 0 0;
-        color: #a8aec7;
-        font-size: 10px;
-        font-weight: 500;
-      }
-
-      .hero-footnote span {
-        width: 29px;
-        height: 1px;
-        background: #4a5274;
       }
 
       .printer-stage {
@@ -502,7 +612,6 @@
         background: transparent;
         color: #b6bad3;
         cursor: pointer;
-        font-size: 8px;
         font-weight: 700;
         white-space: nowrap;
         transition:
@@ -602,7 +711,6 @@
         background: rgb(13 19 39 / 93%);
         color: #ebe7f5;
         cursor: pointer;
-        font-size: 9px;
         font-weight: 700;
         backdrop-filter: blur(8px);
         transition:
@@ -669,7 +777,6 @@
       .marquee span {
         color: #c2c6dc;
         font-family: var(--display);
-        font-size: 10px;
         font-weight: 800;
         letter-spacing: 0.14em;
       }
@@ -715,7 +822,7 @@
         line-height: 1.03;
       }
 
-      .art-heading h2 span {
+      .art-heading h2 .heading-accent {
         color: var(--leaf);
         font-family: Georgia, "Times New Roman", serif;
         font-style: italic;
@@ -726,7 +833,6 @@
         max-width: 320px;
         margin: 0 0 2px;
         color: #adb2ca;
-        font-size: 12px;
         line-height: 1.75;
       }
 
@@ -783,7 +889,6 @@
         border-radius: 999px;
         background: rgb(14 17 38 / 72%);
         color: #f0edf8;
-        font-size: 8px;
         font-weight: 700;
         letter-spacing: 0.11em;
         backdrop-filter: blur(8px);
@@ -811,7 +916,6 @@
 
       .gallery-caption span {
         color: #f18bd7;
-        font-size: 8px;
         font-weight: 700;
         letter-spacing: 0.12em;
         text-align: right;
@@ -832,7 +936,6 @@
       .section-kicker {
         margin: 0 0 16px;
         color: #c7afd2;
-        font-size: 9px;
         font-weight: 700;
         letter-spacing: 0.17em;
         text-transform: uppercase;
@@ -849,8 +952,8 @@
         line-height: 1.02;
       }
 
-      .idea-heading h2 span,
-      .approach-heading h2 span {
+      .idea-heading h2 .heading-accent,
+      .approach-heading h2 .heading-accent {
         color: #ee80d5;
         font-family: Georgia, "Times New Roman", serif;
         font-style: italic;
@@ -865,7 +968,6 @@
         max-width: 520px;
         margin: 0;
         color: #b3bad2;
-        font-size: 14px;
         line-height: 1.85;
       }
 
@@ -875,7 +977,6 @@
         gap: 10px;
         margin-top: 26px;
         color: #d8d5e9;
-        font-size: 10px;
         font-weight: 700;
         letter-spacing: 0.05em;
       }
@@ -903,7 +1004,6 @@
         display: block;
         margin-bottom: 26px;
         color: #c4a8d3;
-        font-size: 9px;
         font-weight: 700;
         letter-spacing: 0.12em;
       }
@@ -911,7 +1011,6 @@
       .principle h3 {
         margin: 0 0 8px;
         font-family: var(--display);
-        font-size: 15px;
         font-weight: 700;
         letter-spacing: -0.04em;
       }
@@ -920,7 +1019,6 @@
         max-width: 260px;
         margin: 0;
         color: #abb4cf;
-        font-size: 11px;
         line-height: 1.7;
       }
 
@@ -945,7 +1043,7 @@
         font-size: clamp(45px, 5.2vw, 69px);
       }
 
-      .approach-heading h2 span {
+      .approach-heading h2 .heading-accent {
         color: var(--leaf);
       }
 
@@ -953,7 +1051,6 @@
         max-width: 430px;
         margin: 22px 0 0;
         color: #c0bfd8;
-        font-size: 13px;
         line-height: 1.85;
       }
 
@@ -974,14 +1071,12 @@
         margin-bottom: 31px;
         color: var(--leaf);
         font-family: var(--display);
-        font-size: 11px;
         font-weight: 700;
       }
 
       .approach-step h3 {
         margin: 0 0 8px;
         font-family: var(--display);
-        font-size: 14px;
         font-weight: 700;
         letter-spacing: -0.02em;
       }
@@ -989,7 +1084,6 @@
       .approach-step p {
         margin: 0;
         color: #bcbdd4;
-        font-size: 10px;
         line-height: 1.75;
       }
 
@@ -1002,7 +1096,7 @@
       .closing-section::before {
         position: absolute;
         top: -175px;
-        right: -65px;
+        inset-inline-end: -65px;
         width: 460px;
         height: 460px;
         border: 1px solid #2a3150;
@@ -1022,7 +1116,7 @@
         font-size: clamp(45px, 7vw, 91px);
       }
 
-      .closing-copy h2 span {
+      .closing-copy h2 .heading-accent {
         color: #ee80d5;
         font-family: Georgia, "Times New Roman", serif;
         font-style: italic;
@@ -1032,7 +1126,6 @@
       .closing-copy p:last-child {
         margin: 20px 0 0;
         color: #b3b8cf;
-        font-size: 13px;
       }
 
       .footer {
@@ -1054,7 +1147,6 @@
       .footer-inner > p {
         margin: 0;
         color: #a5acc6;
-        font-size: 9px;
       }
 
       .stage-fallback-note {
@@ -1064,7 +1156,6 @@
         left: 17px;
         max-width: 210px;
         color: #b4bbd2;
-        font-size: 8px;
       }
 
       .reveal {
@@ -1116,7 +1207,7 @@
 
         .site-nav {
           gap: 26px;
-          margin-left: 34px;
+          margin-inline-start: 34px;
         }
 
         .hero {
@@ -1146,7 +1237,6 @@
 
         .announcement {
           min-height: 30px;
-          font-size: 8px;
         }
 
         .header-inner,
@@ -1169,9 +1259,13 @@
 
         .header-cta {
           min-height: 39px;
-          margin-left: auto;
+          margin-inline-start: auto;
           padding: 0 11px;
-          font-size: 9px;
+        }
+
+        .language-toggle {
+          min-height: 39px;
+          padding: 0 9px;
         }
 
         .site-nav {
@@ -1196,7 +1290,6 @@
         .site-nav a {
           padding: 13px 0;
           border-bottom: 1px solid var(--line);
-          font-size: 13px;
         }
 
         .site-nav a::after {
@@ -1230,15 +1323,10 @@
 
         .hero-description {
           max-width: 550px;
-          font-size: 12px;
         }
 
         .hero-ctas {
           margin-top: 23px;
-        }
-
-        .hero-footnote {
-          margin-top: 26px;
         }
 
         .printer-stage {
@@ -1267,7 +1355,6 @@
         .scene-button {
           min-height: 33px;
           padding: 0 9px;
-          font-size: 8px;
         }
 
         .scene-button.icon-only {
@@ -1280,7 +1367,6 @@
         }
 
         .marquee span {
-          font-size: 9px;
         }
 
         .art-section {
@@ -1296,10 +1382,6 @@
 
         .art-heading h2 {
           font-size: clamp(40px, 9.5vw, 56px);
-        }
-
-        .art-heading > p {
-          font-size: 11px;
         }
 
         .image-gallery {
@@ -1336,7 +1418,6 @@
         }
 
         .idea-copy > p {
-          font-size: 13px;
         }
 
         .principles {
@@ -1354,11 +1435,9 @@
         }
 
         .principle h3 {
-          font-size: 13px;
         }
 
         .principle p {
-          font-size: 9px;
         }
 
         .approach-section {
@@ -1367,7 +1446,6 @@
 
         .approach-summary {
           margin-top: 17px;
-          font-size: 12px;
         }
 
         .approach-steps {
@@ -1380,11 +1458,9 @@
         }
 
         .approach-step h3 {
-          font-size: 12px;
         }
 
         .approach-step p {
-          font-size: 9px;
         }
 
         .closing-section {
@@ -1393,7 +1469,7 @@
 
         .closing-section::before {
           top: -115px;
-          right: -260px;
+          inset-inline-end: -260px;
           width: 370px;
           height: 370px;
         }
@@ -1403,7 +1479,6 @@
         }
 
         .closing-copy p:last-child {
-          font-size: 11px;
         }
 
         .footer-inner {
@@ -1443,11 +1518,9 @@
         .button-primary {
           min-height: 46px;
           padding: 0 15px;
-          font-size: 10px;
         }
 
         .text-link {
-          font-size: 10px;
         }
 
         .image-gallery {
@@ -1509,7 +1582,6 @@
 
         .principle p {
           max-width: none;
-          font-size: 10px;
         }
 
         .approach-steps {
@@ -1549,21 +1621,30 @@
   </head>
   <body>
     <div class="announcement">
-      An independent 3D-printing studio <span aria-hidden="true">✳</span>
+      <span class="announcement-copy" data-i18n="announcement">An independent 3D-printing studio</span>
+      <span class="announcement-symbol" aria-hidden="true">✳</span>
     </div>
 
     <header class="site-header">
       <div class="header-inner">
-        <a class="wordmark" href="#home" aria-label="Kuby home">
+        <a class="wordmark" href="#home" aria-label="Kuby home" data-i18n-aria="homeAria">
           <span class="wordmark-flower" aria-hidden="true"></span>
           Kuby
         </a>
 
-        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-          <a href="#idea">The idea</a>
-          <a href="#approach">Our approach</a>
-          <a href="#studio">The studio</a>
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation" data-i18n-aria="mainNavAria">
+          <a href="#idea" data-i18n="navIdea">The idea</a>
+          <a href="#approach" data-i18n="navApproach">Our approach</a>
+          <a href="#studio" data-i18n="navStudio">The studio</a>
         </nav>
+
+        <button class="language-toggle" id="language-toggle" type="button" aria-label="Switch language to Arabic">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" />
+            <path d="M3.5 12h17M12 3c2.2 2.4 3.2 5.4 3.2 9s-1 6.6-3.2 9c-2.2-2.4-3.2-5.4-3.2-9s1-6.6 3.2-9Z" stroke="currentColor" stroke-width="1.3" />
+          </svg>
+          <span id="language-label" lang="ar">العربية</span>
+        </button>
 
         <a
           class="header-cta shop-link"
@@ -1571,8 +1652,9 @@
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Shop Kuby on Noon"
+          data-i18n-aria="shopAria"
         >
-          Shop
+          <span data-i18n="shopLabel">Shop</span>
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
@@ -1595,30 +1677,30 @@
     <main>
       <section class="hero" id="home" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow"><span class="eyebrow-dot"></span> Thoughtful things, made differently</p>
+          <p class="eyebrow"><span class="eyebrow-dot"></span><span data-i18n="heroEyebrow">Thoughtful things, made differently</span></p>
           <h1 id="hero-title">KUBY<span>.</span></h1>
-          <p class="hero-deck">A little more imagination in the everyday.</p>
-          <p class="hero-description">
+          <p class="hero-deck" data-i18n="heroDeck">A little more imagination in the everyday.</p>
+          <p class="hero-description" data-i18n="heroDescription">
             Kuby is an independent 3D-printing studio turning good ideas into useful, joy-bringing objects—from clever desk essentials and sculptural table lamps to the filament behind your next idea.
           </p>
           <div class="hero-ctas">
             <a class="button-primary" href="#idea">
-              Get to know Kuby
+              <span data-i18n="heroAbout">Get to know Kuby</span>
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </a>
-            <a class="text-link" href="#approach">How we make things</a>
+            <a class="text-link" href="#approach" data-i18n="heroApproach">How we make things</a>
           </div>
-          <p class="hero-footnote"><span aria-hidden="true"></span> Designed with curiosity. Printed one layer at a time.</p>
         </div>
 
-        <figure class="printer-stage" id="studio" aria-label="Interactive 3D printer printing the word KUBY">
+        <figure class="printer-stage" id="studio" aria-label="Interactive 3D printer printing the word KUBY" data-i18n-aria="printerStageAria">
           <canvas
             class="printer-canvas"
             id="printer-canvas"
             role="img"
             aria-label="A three-dimensional printer builds the letters KUBY layer by layer. Drag to rotate the view."
+            data-i18n-aria="canvasAria"
           ></canvas>
 
           <div class="scene-fallback" aria-hidden="true">
@@ -1647,7 +1729,7 @@
                 <path d="M180 445h540v54H180z" fill="#1d2745" />
                 <path d="m215 433 468 0-48 43H264z" fill="url(#fallback-bed)" />
                 <path d="m288 427 323 0-49 26H337z" fill="#4a5281" />
-                <text x="449" y="417" fill="#f078d6" font-family="Manrope, sans-serif" font-size="61" font-weight="800" letter-spacing="-5" text-anchor="middle" transform="skewX(-10)">KUBY</text>
+                <text x="449" y="417" fill="#f078d6" font-family="Arial, sans-serif" font-size="61" font-weight="800" letter-spacing="-5" text-anchor="middle" transform="skewX(-10)">KUBY</text>
                 <rect x="414" y="222" width="70" height="37" rx="5" fill="#de55bd" />
                 <path d="M429 258h40l-7 33h-26z" fill="#747a9e" />
                 <path d="m439 290 20 0-4 23h-12z" fill="#9281ec" />
@@ -1659,21 +1741,22 @@
                 <path d="M-40 0c0-23 18-41 40-41s40 18 40 41" fill="none" stroke="#c5aaff" stroke-width="4" />
               </g>
               <path d="M308 110c25 14 29 24 59 29s37 18 37 43" fill="none" stroke="#f17acb" stroke-width="4" />
-              <text x="450" y="552" fill="#bec5df" font-family="DM Sans, sans-serif" font-size="12" font-weight="700" letter-spacing="3" text-anchor="middle">A LITTLE BIT OF KUBY, LAYER BY LAYER</text>
+              <text x="450" y="552" fill="#bec5df" font-family="Tajawal, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="3" text-anchor="middle" data-i18n="fallbackTagline">A LITTLE BIT OF KUBY, LAYER BY LAYER</text>
             </svg>
           </div>
 
           <div class="stage-meta">
-            <div class="stage-label" aria-hidden="true"><span></span> Kuby / Studio printer 01</div>
-            <div class="speed-control" role="group" aria-label="Printer animation speed">
+            <div class="stage-label" aria-hidden="true"><span></span><span data-i18n="stageLabel">Kuby / Studio printer 01</span></div>
+            <div class="speed-control" role="group" aria-label="Printer animation speed" data-i18n-aria="speedGroupAria">
               <button
                 class="speed-option"
                 id="speed-realtime"
                 type="button"
                 aria-pressed="true"
                 aria-label="Real-time printing at normal speed"
+                data-i18n-aria="speedRealtimeAria"
               >
-                <span>1×</span><span class="speed-name">Real-time</span>
+                <span class="speed-rate">1×</span><span class="speed-name" data-i18n="speedRealtime">Real-time</span>
               </button>
               <button
                 class="speed-option"
@@ -1681,14 +1764,15 @@
                 type="button"
                 aria-pressed="false"
                 aria-label="Fast-forward printing at five times speed"
+                data-i18n-aria="speedFastAria"
               >
-                <span>5×</span><span class="speed-name">Fast-forward</span>
+                <span class="speed-rate">5×</span><span class="speed-name" data-i18n="speedFast">Fast-forward</span>
               </button>
             </div>
           </div>
           <div class="stage-instruction" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><path d="M8 11V6a2 2 0 1 1 4 0v5-2a2 2 0 1 1 4 0v3-1a2 2 0 1 1 4 0v5c0 3-2 5-5 5h-2c-2 0-3-1-4-2l-3-3a2 2 0 0 1 3-3l2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
-            Drag to explore
+            <span data-i18n="dragExplore">Drag to explore</span>
           </div>
           <div class="stage-control-bar">
             <div class="print-status" id="print-status">
@@ -1700,20 +1784,20 @@
                 <svg id="toggle-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
                 <span id="toggle-label">Pause</span>
               </button>
-              <button class="scene-button icon-only" id="print-replay" type="button" aria-label="Replay the KUBY print">
+              <button class="scene-button icon-only" id="print-replay" type="button" aria-label="Replay the KUBY print" data-i18n-aria="replayAria">
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 11a8 8 0 1 1 2.1 5.4M4 5v6h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
               </button>
             </div>
           </div>
-          <p class="stage-fallback-note" id="fallback-note" hidden>3D preview unavailable. The Kuby spirit is still very much here.</p>
+          <p class="stage-fallback-note" id="fallback-note" hidden data-i18n="fallbackNote">3D preview unavailable. The Kuby spirit is still very much here.</p>
         </figure>
       </section>
 
-      <div class="marquee" aria-label="Made with curiosity, built one layer at a time, designed for everyday life">
+      <div class="marquee" aria-label="Made with curiosity, built one layer at a time, designed for everyday life" data-i18n-aria="marqueeAria">
         <div class="marquee-track" aria-hidden="true">
-          <span>MADE WITH CURIOSITY</span><b>✳</b><span>BUILT ONE LAYER AT A TIME</span><b>✳</b><span>DESIGNED FOR EVERYDAY LIFE</span><b>✳</b>
-          <span>MADE WITH CURIOSITY</span><b>✳</b><span>BUILT ONE LAYER AT A TIME</span><b>✳</b><span>DESIGNED FOR EVERYDAY LIFE</span><b>✳</b>
-          <span>MADE WITH CURIOSITY</span><b>✳</b><span>BUILT ONE LAYER AT A TIME</span><b>✳</b><span>DESIGNED FOR EVERYDAY LIFE</span><b>✳</b>
+          <span data-i18n="marqueeCuriosity">MADE WITH CURIOSITY</span><b>✳</b><span data-i18n="marqueeLayers">BUILT ONE LAYER AT A TIME</span><b>✳</b><span data-i18n="marqueeEveryday">DESIGNED FOR EVERYDAY LIFE</span><b>✳</b>
+          <span data-i18n="marqueeCuriosity">MADE WITH CURIOSITY</span><b>✳</b><span data-i18n="marqueeLayers">BUILT ONE LAYER AT A TIME</span><b>✳</b><span data-i18n="marqueeEveryday">DESIGNED FOR EVERYDAY LIFE</span><b>✳</b>
+          <span data-i18n="marqueeCuriosity">MADE WITH CURIOSITY</span><b>✳</b><span data-i18n="marqueeLayers">BUILT ONE LAYER AT A TIME</span><b>✳</b><span data-i18n="marqueeEveryday">DESIGNED FOR EVERYDAY LIFE</span><b>✳</b>
         </div>
       </div>
 
@@ -1721,41 +1805,44 @@
         <div class="section-shell">
           <div class="art-heading reveal">
             <div>
-              <p class="section-kicker">Kuby, in colour</p>
-              <h2 id="art-title">Good ideas take <span>interesting shapes.</span></h2>
+              <p class="section-kicker" data-i18n="artKicker">Kuby, in colour</p>
+              <h2 id="art-title"><span class="heading-lead" data-i18n="artTitleLead">Good ideas take</span> <span class="heading-accent" data-i18n="artTitleAccent">interesting shapes.</span></h2>
             </div>
-            <p>Our world is built from curious forms, bold colour, and the satisfying process of making something real.</p>
+            <p data-i18n="artDescription">Our world is built from curious forms, bold colour, and the satisfying process of making something real.</p>
           </div>
-          <div class="image-gallery" aria-label="Kuby studio and design inspiration">
+          <div class="image-gallery" aria-label="Kuby studio and design inspiration" data-i18n-aria="galleryAria">
             <figure class="gallery-card reveal">
               <img
                 src="./art-printer.svg"
                 alt="Close-up of a 3D printer working under colourful studio lighting"
+                data-i18n-alt="galleryPrinterAlt"
                 loading="lazy"
                 decoding="async"
               />
-              <span class="gallery-index">01 / PROCESS</span>
-              <figcaption class="gallery-caption"><strong>Made layer by layer</strong><span>Ideas into objects</span></figcaption>
+              <span class="gallery-index" data-i18n="galleryPrinterIndex">01 / PROCESS</span>
+              <figcaption class="gallery-caption"><strong data-i18n="galleryPrinterTitle">Made layer by layer</strong><span data-i18n="galleryPrinterCaption">Ideas into objects</span></figcaption>
             </figure>
             <figure class="gallery-card reveal">
               <img
                 src="./art-shapes.svg"
                 alt="Iridescent abstract 3D shapes against a soft gradient"
+                data-i18n-alt="galleryFormsAlt"
                 loading="lazy"
                 decoding="async"
               />
-              <span class="gallery-index">02 / FORM</span>
-              <figcaption class="gallery-caption"><strong>Curiosity in shape</strong><span>Unexpected forms</span></figcaption>
+              <span class="gallery-index" data-i18n="galleryFormsIndex">02 / FORM</span>
+              <figcaption class="gallery-caption"><strong data-i18n="galleryFormsTitle">Curiosity in shape</strong><span data-i18n="galleryFormsCaption">Unexpected forms</span></figcaption>
             </figure>
             <figure class="gallery-card reveal">
               <img
                 src="./art-studio.svg"
                 alt="A 3D printer and colorful prototypes in a maker studio"
+                data-i18n-alt="galleryStudioAlt"
                 loading="lazy"
                 decoding="async"
               />
-              <span class="gallery-index">03 / STUDIO</span>
-              <figcaption class="gallery-caption"><strong>A place to experiment</strong><span>Room for new ideas</span></figcaption>
+              <span class="gallery-index" data-i18n="galleryStudioIndex">03 / STUDIO</span>
+              <figcaption class="gallery-caption"><strong data-i18n="galleryStudioTitle">A place to experiment</strong><span data-i18n="galleryStudioCaption">Room for new ideas</span></figcaption>
             </figure>
           </div>
         </div>
@@ -1765,35 +1852,35 @@
         <div class="section-shell">
           <div class="idea-grid">
             <div class="idea-heading reveal">
-              <p class="section-kicker">The idea behind Kuby</p>
-              <h2 id="idea-title">The little things deserve a <span>point of view.</span></h2>
+              <p class="section-kicker" data-i18n="ideaKicker">The idea behind Kuby</p>
+              <h2 id="idea-title"><span class="heading-lead" data-i18n="ideaTitleLead">The little things deserve a</span> <span class="heading-accent" data-i18n="ideaTitleAccent">point of view.</span></h2>
             </div>
             <div class="idea-copy reveal">
-              <p>
+              <p data-i18n="ideaDescription">
                 We believe everyday objects can be practical and full of personality. Kuby brings design and 3D printing together to make useful things feel considered, colourful, and a little unexpected.
               </p>
               <div class="idea-signoff">
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8m0-12.8L5.6 18.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" /></svg>
-                Designed for real days and curious minds
+                <span data-i18n="ideaSignoff">Designed for real days and curious minds</span>
               </div>
             </div>
           </div>
 
-          <div class="principles" aria-label="What guides Kuby">
+          <div class="principles" aria-label="What guides Kuby" data-i18n-aria="principlesAria">
             <article class="principle reveal">
-              <span class="principle-number">01 / PLAY</span>
-              <h3>Curiosity comes first</h3>
-              <p>We follow a good question, a fresh shape, or a colour combination that makes us look twice.</p>
+              <span class="principle-number" data-i18n="principleOneNumber">01 / PLAY</span>
+              <h3 data-i18n="principleOneTitle">Curiosity comes first</h3>
+              <p data-i18n="principleOneDescription">We follow a good question, a fresh shape, or a colour combination that makes us look twice.</p>
             </article>
             <article class="principle reveal">
-              <span class="principle-number">02 / PURPOSE</span>
-              <h3>Useful has its own beauty</h3>
-              <p>We give everyday essentials thoughtful details and forms worth keeping close.</p>
+              <span class="principle-number" data-i18n="principleTwoNumber">02 / PURPOSE</span>
+              <h3 data-i18n="principleTwoTitle">Useful has its own beauty</h3>
+              <p data-i18n="principleTwoDescription">We give everyday essentials thoughtful details and forms worth keeping close.</p>
             </article>
             <article class="principle reveal">
-              <span class="principle-number">03 / PROCESS</span>
-              <h3>Made layer by layer</h3>
-              <p>3D printing gives ideas room to become real, one measured layer at a time.</p>
+              <span class="principle-number" data-i18n="principleThreeNumber">03 / PROCESS</span>
+              <h3 data-i18n="principleThreeTitle">Made layer by layer</h3>
+              <p data-i18n="principleThreeDescription">3D printing gives ideas room to become real, one measured layer at a time.</p>
             </article>
           </div>
         </div>
@@ -1802,27 +1889,27 @@
       <section class="approach-section" id="approach" aria-labelledby="approach-title">
         <div class="section-shell approach-grid">
           <div class="approach-heading reveal">
-            <p class="section-kicker">From thought to thing</p>
-            <h2 id="approach-title">A good idea takes <span>shape.</span></h2>
-            <p class="approach-summary">
+            <p class="section-kicker" data-i18n="approachKicker">From thought to thing</p>
+            <h2 id="approach-title"><span class="heading-lead" data-i18n="approachTitleLead">A good idea takes</span> <span class="heading-accent" data-i18n="approachTitleAccent">shape.</span></h2>
+            <p class="approach-summary" data-i18n="approachDescription">
               We keep the process close to the idea: design with intention, print with care, and finish every piece ready for its place in your day.
             </p>
           </div>
-          <div class="approach-steps reveal" aria-label="How Kuby brings ideas to life">
+          <div class="approach-steps reveal" aria-label="How Kuby brings ideas to life" data-i18n-aria="approachStepsAria">
             <article class="approach-step">
-              <span class="approach-step-number">01</span>
-              <h3>Imagine</h3>
-              <p>We sketch, test, and refine until the form feels just right.</p>
+              <span class="approach-step-number" data-i18n="stepOneNumber">01</span>
+              <h3 data-i18n="stepOneTitle">Imagine</h3>
+              <p data-i18n="stepOneDescription">We sketch, test, and refine until the form feels just right.</p>
             </article>
             <article class="approach-step">
-              <span class="approach-step-number">02</span>
-              <h3>Print</h3>
-              <p>Our printers turn the design into tangible layers and colour.</p>
+              <span class="approach-step-number" data-i18n="stepTwoNumber">02</span>
+              <h3 data-i18n="stepTwoTitle">Print</h3>
+              <p data-i18n="stepTwoDescription">Our printers turn the design into tangible layers and colour.</p>
             </article>
             <article class="approach-step">
-              <span class="approach-step-number">03</span>
-              <h3>Make it yours</h3>
-              <p>Every finished idea is ready to find a place in your world.</p>
+              <span class="approach-step-number" data-i18n="stepThreeNumber">03</span>
+              <h3 data-i18n="stepThreeTitle">Make it yours</h3>
+              <p data-i18n="stepThreeDescription">Every finished idea is ready to find a place in your world.</p>
             </article>
           </div>
         </div>
@@ -1830,25 +1917,230 @@
 
       <section class="closing-section" aria-labelledby="closing-title">
         <div class="section-shell closing-copy reveal">
-          <p class="section-kicker">That’s Kuby</p>
-          <h2 id="closing-title">Everyday, with a <span>twist.</span></h2>
-          <p>Thoughtful design. Tactile things. A little more delight in the details.</p>
+          <p class="section-kicker" data-i18n="closingKicker">That’s Kuby</p>
+          <h2 id="closing-title"><span class="heading-lead" data-i18n="closingTitleLead">Everyday, with a</span> <span class="heading-accent" data-i18n="closingTitleAccent">twist.</span></h2>
+          <p data-i18n="closingDescription">Thoughtful design. Tactile things. A little more delight in the details.</p>
         </div>
       </section>
     </main>
 
     <footer class="footer">
       <div class="section-shell footer-inner">
-        <a class="wordmark" href="#home" aria-label="Kuby home">
+        <a class="wordmark" href="#home" aria-label="Kuby home" data-i18n-aria="homeAria">
           <span class="wordmark-flower" aria-hidden="true"></span>
           Kuby
         </a>
-        <p>© <span id="year"></span> Kuby. Made with curiosity.</p>
+        <p>© <span id="year"></span> <span data-i18n="footerCopy">Kuby. Made with curiosity.</span></p>
       </div>
     </footer>
 
     <script src="./kuby-three.js"></script>
     <script>
+      const translations = {
+        en: {
+          pageTitle: "Kuby — Made for the everyday",
+          pageDescription: "Meet Kuby, an independent 3D-printing studio making everyday ideas a little more considered.",
+          announcement: "An independent 3D-printing studio",
+          homeAria: "Kuby home",
+          mainNavAria: "Main navigation",
+          navIdea: "The idea",
+          navApproach: "Our approach",
+          navStudio: "The studio",
+          languageSwitchLabel: "العربية",
+          languageSwitchAria: "Switch language to Arabic",
+          shopLabel: "Shop",
+          shopAria: "Shop Kuby on Noon",
+          menuOpenAria: "Open navigation menu",
+          menuCloseAria: "Close navigation menu",
+          heroEyebrow: "Thoughtful things, made differently",
+          heroDeck: "A little more imagination in the everyday.",
+          heroDescription: "Kuby is an independent 3D-printing studio turning good ideas into useful, joy-bringing objects—from clever desk essentials and sculptural table lamps to the filament behind your next idea.",
+          heroAbout: "Get to know Kuby",
+          heroApproach: "How we make things",
+          printerStageAria: "Interactive 3D printer printing the word KUBY",
+          canvasAria: "A three-dimensional printer builds the letters KUBY layer by layer. Drag to rotate the view.",
+          fallbackTagline: "A LITTLE BIT OF KUBY, LAYER BY LAYER",
+          stageLabel: "Kuby / Studio printer 01",
+          speedGroupAria: "Printer animation speed",
+          speedRealtime: "Real-time",
+          speedRealtimeAria: "Real-time printing at normal speed",
+          speedFast: "Fast-forward",
+          speedFastAria: "Fast-forward printing at five times speed",
+          dragExplore: "Drag to explore",
+          pause: "Pause",
+          resume: "Resume",
+          pauseAria: "Pause the print",
+          resumeAria: "Resume the print",
+          replayAria: "Replay the KUBY print",
+          statusLoading: "Loading printer",
+          statusLoadingCount: "Getting the studio ready",
+          statusPrinting: "Printing KUBY",
+          statusPaused: "Print paused",
+          statusReady: "KUBY is ready",
+          statusStudio: "Studio preview",
+          statusStudioCount: "A little bit of Kuby, layer by layer",
+          statusLayer: "Layer",
+          statusCompleteCount: "32 layers / one good idea",
+          fallbackNote: "3D preview unavailable. The Kuby spirit is still very much here.",
+          marqueeAria: "Made with curiosity, built one layer at a time, designed for everyday life",
+          marqueeCuriosity: "MADE WITH CURIOSITY",
+          marqueeLayers: "BUILT ONE LAYER AT A TIME",
+          marqueeEveryday: "DESIGNED FOR EVERYDAY LIFE",
+          artKicker: "Kuby, in colour",
+          artTitleLead: "Good ideas take",
+          artTitleAccent: "interesting shapes.",
+          artDescription: "Our world is built from curious forms, bold colour, and the satisfying process of making something real.",
+          galleryAria: "Kuby studio and design inspiration",
+          galleryPrinterAlt: "Close-up of a 3D printer working under colourful studio lighting",
+          galleryPrinterIndex: "01 / PROCESS",
+          galleryPrinterTitle: "Made layer by layer",
+          galleryPrinterCaption: "Ideas into objects",
+          galleryFormsAlt: "Iridescent abstract 3D shapes against a soft gradient",
+          galleryFormsIndex: "02 / FORM",
+          galleryFormsTitle: "Curiosity in shape",
+          galleryFormsCaption: "Unexpected forms",
+          galleryStudioAlt: "A 3D printer and colorful prototypes in a maker studio",
+          galleryStudioIndex: "03 / STUDIO",
+          galleryStudioTitle: "A place to experiment",
+          galleryStudioCaption: "Room for new ideas",
+          ideaKicker: "The idea behind Kuby",
+          ideaTitleLead: "The little things deserve a",
+          ideaTitleAccent: "point of view.",
+          ideaDescription: "We believe everyday objects can be practical and full of personality. Kuby brings design and 3D printing together to make useful things feel considered, colourful, and a little unexpected.",
+          ideaSignoff: "Designed for real days and curious minds",
+          principlesAria: "What guides Kuby",
+          principleOneNumber: "01 / PLAY",
+          principleOneTitle: "Curiosity comes first",
+          principleOneDescription: "We follow a good question, a fresh shape, or a colour combination that makes us look twice.",
+          principleTwoNumber: "02 / PURPOSE",
+          principleTwoTitle: "Useful has its own beauty",
+          principleTwoDescription: "We give everyday essentials thoughtful details and forms worth keeping close.",
+          principleThreeNumber: "03 / PROCESS",
+          principleThreeTitle: "Made layer by layer",
+          principleThreeDescription: "3D printing gives ideas room to become real, one measured layer at a time.",
+          approachKicker: "From thought to thing",
+          approachTitleLead: "A good idea takes",
+          approachTitleAccent: "shape.",
+          approachDescription: "We keep the process close to the idea: design with intention, print with care, and finish every piece ready for its place in your day.",
+          approachStepsAria: "How Kuby brings ideas to life",
+          stepOneNumber: "01",
+          stepOneTitle: "Imagine",
+          stepOneDescription: "We sketch, test, and refine until the form feels just right.",
+          stepTwoNumber: "02",
+          stepTwoTitle: "Print",
+          stepTwoDescription: "Our printers turn the design into tangible layers and colour.",
+          stepThreeNumber: "03",
+          stepThreeTitle: "Make it yours",
+          stepThreeDescription: "Every finished idea is ready to find a place in your world.",
+          closingKicker: "That’s Kuby",
+          closingTitleLead: "Everyday, with a",
+          closingTitleAccent: "twist.",
+          closingDescription: "Thoughtful design. Tactile things. A little more delight in the details.",
+          footerCopy: "Kuby. Made with curiosity.",
+        },
+        ar: {
+          pageTitle: "Kuby — لمسة مختلفة كل يوم",
+          pageDescription: "تعرّف على Kuby، استوديو مستقل للطباعة ثلاثية الأبعاد يصنع أفكاراً يومية بتفاصيل مدروسة.",
+          announcement: "استوديو مستقل للطباعة ثلاثية الأبعاد",
+          homeAria: "الصفحة الرئيسية لـ Kuby",
+          mainNavAria: "التنقل الرئيسي",
+          navIdea: "الفكرة",
+          navApproach: "منهجنا",
+          navStudio: "الاستوديو",
+          languageSwitchLabel: "English",
+          languageSwitchAria: "Switch language to English",
+          shopLabel: "تسوّق",
+          shopAria: "تسوّق منتجات Kuby على Noon",
+          menuOpenAria: "افتح قائمة التنقل",
+          menuCloseAria: "أغلق قائمة التنقل",
+          heroEyebrow: "أفكار مدروسة، تُصنع بطريقة مختلفة",
+          heroDeck: "خيال أكثر في تفاصيل يومك.",
+          heroDescription: "Kuby استوديو مستقل للطباعة ثلاثية الأبعاد يحوّل الأفكار الجيدة إلى أشياء عملية تبعث السرور—من مستلزمات المكتب الذكية ومصابيح الطاولة ذات التصاميم المميزة، إلى خيوط الطباعة التي تمنح فكرتك التالية لونها.",
+          heroAbout: "تعرّف على Kuby",
+          heroApproach: "كيف نصنع الأشياء",
+          printerStageAria: "طابعة ثلاثية الأبعاد تفاعلية تطبع كلمة KUBY",
+          canvasAria: "طابعة ثلاثية الأبعاد تبني أحرف KUBY طبقة بعد طبقة. اسحب لتدوير المشهد.",
+          fallbackTagline: "لمسة من KUBY، طبقة بعد طبقة",
+          stageLabel: "Kuby / طابعة الاستوديو ٠١",
+          speedGroupAria: "سرعة حركة الطابعة",
+          speedRealtime: "الوقت الحقيقي",
+          speedRealtimeAria: "الطباعة بالسرعة العادية",
+          speedFast: "تسريع",
+          speedFastAria: "تسريع الطباعة خمس مرات",
+          dragExplore: "اسحب لاستكشاف الطابعة",
+          pause: "إيقاف مؤقت",
+          resume: "استئناف",
+          pauseAria: "إيقاف الطباعة مؤقتاً",
+          resumeAria: "استئناف الطباعة",
+          replayAria: "إعادة طباعة KUBY",
+          statusLoading: "جارٍ تجهيز الطابعة",
+          statusLoadingCount: "نجهّز الاستوديو",
+          statusPrinting: "تُطبع KUBY",
+          statusPaused: "الطباعة متوقفة مؤقتاً",
+          statusReady: "اكتملت KUBY",
+          statusStudio: "معاينة الاستوديو",
+          statusStudioCount: "لمحة عن Kuby، طبقة بعد طبقة",
+          statusLayer: "الطبقة",
+          statusCompleteCount: "٣٢ طبقة / فكرة رائعة",
+          fallbackNote: "المعاينة ثلاثية الأبعاد غير متاحة، لكن روح Kuby حاضرة.",
+          marqueeAria: "أفكار بفضول، طبقة بعد طبقة، وتصميم للحياة اليومية",
+          marqueeCuriosity: "صُنعت بفضول",
+          marqueeLayers: "تُبنى طبقة بعد طبقة",
+          marqueeEveryday: "مصممة للحياة اليومية",
+          artKicker: "Kuby، بألوانه",
+          artTitleLead: "الأفكار الجيدة تتخذ",
+          artTitleAccent: "أشكالاً مدهشة.",
+          artDescription: "عالمنا مزيج من الأشكال الفضولية والألوان الجريئة ومتعة تحويل الفكرة إلى شيء ملموس.",
+          galleryAria: "استوديو Kuby ومصادر الإلهام التصميمية",
+          galleryPrinterAlt: "لقطة مقرّبة لطابعة ثلاثية الأبعاد تعمل تحت إضاءة ملوّنة في الاستوديو",
+          galleryPrinterIndex: "٠١ / الطباعة",
+          galleryPrinterTitle: "تُصنع طبقة بعد طبقة",
+          galleryPrinterCaption: "من الفكرة إلى الواقع",
+          galleryFormsAlt: "أشكال تجريدية ثلاثية الأبعاد بألوان متلألئة وتدرّج ناعم",
+          galleryFormsIndex: "٠٢ / الشكل",
+          galleryFormsTitle: "الفضول يتخذ شكلاً",
+          galleryFormsCaption: "أشكال غير متوقعة",
+          galleryStudioAlt: "طابعة ثلاثية الأبعاد ونماذج ملوّنة في استوديو إبداعي",
+          galleryStudioIndex: "٠٣ / الاستوديو",
+          galleryStudioTitle: "مساحة للتجربة",
+          galleryStudioCaption: "مجال لأفكار جديدة",
+          ideaKicker: "الفكرة وراء Kuby",
+          ideaTitleLead: "التفاصيل الصغيرة تستحق",
+          ideaTitleAccent: "لمسة مميزة.",
+          ideaDescription: "نؤمن بأن الأشياء اليومية يمكن أن تكون عملية ومليئة بالشخصية. تجمع Kuby بين التصميم والطباعة ثلاثية الأبعاد لتمنح الأشياء المفيدة مظهراً مدروساً وألواناً حيوية ولمسة غير متوقعة.",
+          ideaSignoff: "مصممة للأيام العادية والعقول الفضولية",
+          principlesAria: "ما الذي يوجّه Kuby",
+          principleOneNumber: "٠١ / مرح",
+          principleOneTitle: "الفضول أولاً",
+          principleOneDescription: "نتبع سؤالاً جيداً أو شكلاً جديداً أو تناغماً لونياً يستحق نظرة أخرى.",
+          principleTwoNumber: "٠٢ / غاية",
+          principleTwoTitle: "للأشياء المفيدة جمالها",
+          principleTwoDescription: "نضيف إلى أساسيات يومك تفاصيل مدروسة وأشكالاً تحب أن تبقيها قريبة.",
+          principleThreeNumber: "٠٣ / عملية",
+          principleThreeTitle: "طبقة بعد طبقة",
+          principleThreeDescription: "تمنح الطباعة ثلاثية الأبعاد الأفكار فرصة لتصبح واقعاً، طبقة دقيقة في كل مرة.",
+          approachKicker: "من فكرة إلى شيء ملموس",
+          approachTitleLead: "الفكرة الجيدة تأخذ",
+          approachTitleAccent: "شكلاً.",
+          approachDescription: "نبقي العملية قريبة من الفكرة: نصمم بعناية، ونطبع باهتمام، ثم ننهي كل قطعة لتجد مكانها في يومك.",
+          approachStepsAria: "كيف تحوّل Kuby الأفكار إلى واقع",
+          stepOneNumber: "٠١",
+          stepOneTitle: "نتخيّل",
+          stepOneDescription: "نرسم ونجرب وننقّح حتى نصل إلى الشكل المناسب.",
+          stepTwoNumber: "٠٢",
+          stepTwoTitle: "نطبع",
+          stepTwoDescription: "تحوّل طابعاتنا التصميم إلى طبقات ملموسة وألوان.",
+          stepThreeNumber: "٠٣",
+          stepThreeTitle: "اجعلها لك",
+          stepThreeDescription: "كل فكرة مكتملة جاهزة لتجد مكاناً في عالمك.",
+          closingKicker: "هذه هي Kuby",
+          closingTitleLead: "كل يوم،",
+          closingTitleAccent: "بلمسة مختلفة.",
+          closingDescription: "تصميم مدروس. أشياء ملموسة. متعة أكبر في التفاصيل.",
+          footerCopy: "Kuby. صُنعت بفضول.",
+        },
+      };
+
       const stage = document.getElementById("studio");
       const canvas = document.getElementById("printer-canvas");
       const fallbackNote = document.getElementById("fallback-note");
@@ -1863,30 +2155,115 @@
       const fastForwardButton = document.getElementById("speed-fast");
       const menuToggle = document.getElementById("menu-toggle");
       const siteNav = document.getElementById("site-nav");
+      const languageToggle = document.getElementById("language-toggle");
+      const languageLabel = document.getElementById("language-label");
+      const pageDescription = document.getElementById("page-description");
+      const yearLabel = document.getElementById("year");
 
       let isPlaying = true;
       let fastForward = false;
       let printElapsed = 0;
       let resetPrint = () => {};
+      let previewReady = false;
+      let previewFailed = false;
+      let currentLanguage = "en";
+      try {
+        currentLanguage = localStorage.getItem("kuby-language") === "ar" ? "ar" : "en";
+      } catch {
+        currentLanguage = "en";
+      }
       const layerCount = 32;
       const secondsPerLayer = 1.5;
       const fastForwardMultiplier = 5;
 
+      const language = () => translations[currentLanguage];
+      const formatNumber = (value, digits = 0) => {
+        const options = { useGrouping: false };
+        if (digits > 0) options.minimumIntegerDigits = digits;
+        return new Intl.NumberFormat(currentLanguage === "ar" ? "ar-u-nu-arab" : "en", options).format(value);
+      };
+
       const updateToggle = () => {
+        const t = language();
         toggleButton.setAttribute("aria-pressed", String(!isPlaying));
-        toggleButton.setAttribute("aria-label", isPlaying ? "Pause the print" : "Resume the print");
-        toggleLabel.textContent = isPlaying ? "Pause" : "Resume";
+        toggleButton.setAttribute("aria-label", isPlaying ? t.pauseAria : t.resumeAria);
+        toggleLabel.textContent = isPlaying ? t.pause : t.resume;
         toggleIcon.innerHTML = isPlaying
           ? '<path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />'
           : '<path d="m9 6 10 6-10 6V6Z" fill="currentColor" />';
         statusCard.classList.toggle("is-paused", !isPlaying);
       };
 
+      const updateMenuLabel = () => {
+        const t = language();
+        const open = menuToggle.getAttribute("aria-expanded") === "true";
+        menuToggle.setAttribute("aria-label", open ? t.menuCloseAria : t.menuOpenAria);
+      };
+
+      const updatePrintStatus = () => {
+        const t = language();
+        if (previewFailed) {
+          statusLabel.textContent = t.statusStudio;
+          statusCount.textContent = t.statusStudioCount;
+          return;
+        }
+        if (!previewReady) {
+          statusLabel.textContent = t.statusLoading;
+          statusCount.textContent = t.statusLoadingCount;
+          return;
+        }
+
+        const complete = printElapsed >= layerCount * secondsPerLayer;
+        const currentLayer = Math.min(layerCount, Math.floor(printElapsed / secondsPerLayer) + 1);
+        statusLabel.textContent = complete ? t.statusReady : isPlaying ? t.statusPrinting : t.statusPaused;
+        statusCount.textContent = complete
+          ? t.statusCompleteCount
+          : `${t.statusLayer} ${formatNumber(currentLayer, 2)} / ${formatNumber(layerCount, 2)}`;
+      };
+
+      const applyLanguage = () => {
+        const t = language();
+        document.documentElement.lang = currentLanguage;
+        document.documentElement.dir = currentLanguage === "ar" ? "rtl" : "ltr";
+        document.title = t.pageTitle;
+        pageDescription.setAttribute("content", t.pageDescription);
+
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          element.textContent = t[element.dataset.i18n];
+        });
+        document.querySelectorAll("[data-i18n-aria]").forEach((element) => {
+          element.setAttribute("aria-label", t[element.dataset.i18nAria]);
+        });
+        document.querySelectorAll("[data-i18n-alt]").forEach((element) => {
+          element.setAttribute("alt", t[element.dataset.i18nAlt]);
+        });
+
+        languageLabel.textContent = t.languageSwitchLabel;
+        languageLabel.lang = currentLanguage === "en" ? "ar" : "en";
+        languageToggle.setAttribute("aria-label", t.languageSwitchAria);
+        languageToggle.setAttribute("lang", currentLanguage === "en" ? "ar" : "en");
+        document.querySelector("#speed-realtime .speed-rate").textContent = currentLanguage === "ar" ? "١×" : "1×";
+        document.querySelector("#speed-fast .speed-rate").textContent = currentLanguage === "ar" ? "٥×" : "5×";
+        yearLabel.textContent = formatNumber(new Date().getFullYear());
+        updateMenuLabel();
+        updateToggle();
+        updatePrintStatus();
+      };
+
+      languageToggle.addEventListener("click", () => {
+        currentLanguage = currentLanguage === "en" ? "ar" : "en";
+        try {
+          localStorage.setItem("kuby-language", currentLanguage);
+        } catch {
+          // The language switch still works for this visit when storage is unavailable.
+        }
+        applyLanguage();
+      });
+
       toggleButton.addEventListener("click", () => {
         isPlaying = !isPlaying;
         updateToggle();
-        if (!isPlaying) statusLabel.textContent = "Print paused";
-        else statusLabel.textContent = printElapsed >= layerCount * secondsPerLayer ? "KUBY is ready" : "Printing KUBY";
+        updatePrintStatus();
       });
 
       replayButton.addEventListener("click", () => {
@@ -1894,7 +2271,7 @@
         isPlaying = true;
         resetPrint();
         updateToggle();
-        statusLabel.textContent = isPlaying ? "Printing KUBY" : "Print paused";
+        updatePrintStatus();
       });
 
       const setPrintSpeed = (isFast) => {
@@ -1909,17 +2286,19 @@
       menuToggle.addEventListener("click", () => {
         const open = menuToggle.getAttribute("aria-expanded") !== "true";
         menuToggle.setAttribute("aria-expanded", String(open));
-        menuToggle.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+        updateMenuLabel();
         siteNav.classList.toggle("is-open", open);
       });
 
       siteNav.querySelectorAll("a").forEach((link) => {
         link.addEventListener("click", () => {
           menuToggle.setAttribute("aria-expanded", "false");
-          menuToggle.setAttribute("aria-label", "Open navigation menu");
+          updateMenuLabel();
           siteNav.classList.remove("is-open");
         });
       });
+
+      applyLanguage();
 
       try {
         const { THREE, OrbitControls, FontLoader, TextGeometry, fontData } = window.KubyThree;
@@ -2211,11 +2590,11 @@
           });
         };
 
-        statusLabel.textContent = "Printing KUBY";
-        statusCount.textContent = `Layer 01 / ${String(layerCount).padStart(2, "0")}`;
+        previewReady = true;
         stage.classList.add("is-ready");
         fallbackNote.hidden = true;
         updateToggle();
+        updatePrintStatus();
 
         const animate = () => {
           requestAnimationFrame(animate);
@@ -2238,13 +2617,7 @@
               layer.visible = index < currentCount;
             });
             shownLayerCount = currentCount;
-            if (complete) {
-              statusLabel.textContent = "KUBY is ready";
-              statusCount.textContent = `${layerCount} layers / one good idea`;
-            } else if (isPlaying) {
-              statusLabel.textContent = "Printing KUBY";
-              statusCount.textContent = `Layer ${String(currentCount).padStart(2, "0")} / ${String(layerCount).padStart(2, "0")}`;
-            }
+            updatePrintStatus();
           }
 
           if (complete) {
@@ -2275,12 +2648,10 @@
         animate();
       } catch (error) {
         console.error("Kuby 3D printer preview could not be loaded:", error);
-        statusLabel.textContent = "Studio preview";
-        statusCount.textContent = "A little bit of Kuby, layer by layer";
+        previewFailed = true;
+        updatePrintStatus();
         fallbackNote.hidden = false;
       }
-
-      document.getElementById("year").textContent = String(new Date().getFullYear());
 
       if ("IntersectionObserver" in window && window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
         document.body.classList.add("motion-ready");
